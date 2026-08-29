@@ -518,8 +518,9 @@
 /* ── Responsive ──────────────────────────────────────────────────── */
 @media (max-width: 640px) {
   .chatbot-trigger {
-    bottom: calc(1rem + env(safe-area-inset-bottom));
-    inset-inline-end: calc(3.5rem + env(safe-area-inset-right));
+    /* Stack above the back-to-top button (44px + gap) */
+    bottom: calc(1.75rem + 44px + 0.6rem);
+    inset-inline-end: 1.75rem;
     width: 46px;
     height: 46px;
     font-size: 1.2rem;
@@ -541,7 +542,9 @@
 
 @media (max-width: 480px) {
   .chatbot-trigger {
-    inset-inline-end: calc(3rem + env(safe-area-inset-right));
+    /* Stack above the back-to-top button (40px + gap) */
+    bottom: calc(1rem + env(safe-area-inset-bottom) + 40px + 0.6rem);
+    inset-inline-end: 1rem;
     width: 42px;
     height: 42px;
     font-size: 1.1rem;
