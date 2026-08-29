@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+  <!-- ── Security Headers ──────────────────────────────── -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:; connect-src 'self' https://api.web3forms.com https://generativelanguage.googleapis.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://api.web3forms.com;">
+
+  <!-- ── Primary Meta ──────────────────────────────────── -->
+  <title>GEENIX | Web Development & Digital Solutions - Innovate. Build. Elevate.</title>
+  <meta name="description" content="GEENIX delivers precision-crafted web development, UI/UX design, SEO, and digital solutions that elevate your brand. Modern, high-performance websites built for businesses and individuals.">
+
+  <meta name="author" content="GEENIX">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta name="color-scheme" content="dark">
+  <link rel="canonical" href="https://www.geenix.live/">
+
+  <!-- ── Open Graph ─────────────────────────────────────── -->
+  <meta property="og:site_name" content="GEENIX">
+  <meta property="og:title" content="GEENIX | Web Development & Digital Solutions - Innovate. Build. Elevate.">
+  <meta property="og:description" content="Precision-crafted web development, UI/UX design, and digital solutions. Innovate. Build. Elevate.">
+  <meta property="og:image" content="https://www.geenix.live/images/geenix-og.jpg">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="1024">
+  <meta property="og:image:alt" content="GEENIX - Innovate. Build. Elevate.">
+  <meta property="og:url" content="https://www.geenix.live/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+
+  <!-- ── Twitter Card ───────────────────────────────────── -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="GEENIX | Web Development & Digital Solutions">
+  <meta name="twitter:description" content="Precision-crafted web development and digital solutions. Innovate. Build. Elevate.">
+  <meta name="twitter:image" content="https://www.geenix.live/images/geenix-og.jpg">
+  <meta name="twitter:image:alt" content="GEENIX - Innovate. Build. Elevate.">
+
+  <!-- ── Icons / PWA ────────────────────────────────────── -->
+  <link rel="icon" href="images/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="images/favicon.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="GEENIX">
+
+  <!-- ── Resource Hints ────────────────────────────────── -->
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+  <!-- ── Fonts ─────────────────────────────────────────── -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" as="style">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- ── Icons ─────────────────────────────────────────── -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" media="print" onload="this.media='all'" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <noscript><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"></noscript>
+
+  <!-- ── Styles ────────────────────────────────────────── -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- ── Structured Data ───────────────────────────────── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "GEENIX",
+    "url": "https://www.geenix.live/",
+    "logo": "https://www.geenix.live/images/geenix-logo.jpg",
+    "image": "https://www.geenix.live/images/geenix-og.jpg",
+    "telephone": "+94718934434",
+    "email": "geesithmanjanaupa2001@gmail.com",
+    "description": "Precision-crafted web development, UI/UX design, SEO, and digital solutions. Innovate. Build. Elevate.",
+    "priceRange": "$$",
+    "areaServed": "Worldwide",
+    "slogan": "Innovate. Build. Elevate.",
+    "serviceType": ["Web Development", "UI/UX Design", "Mobile Optimization", "SEO"]
+  }
+  </script>
+</head>
+<body>
+  <!-- ── Preloader ────────────────────────────────────── -->
+  <div id="geenix-preloader" aria-hidden="true" role="status" aria-label="Loading page content">
+    <div class="preloader-curtain preloader-curtain-top"></div>
+    <div class="preloader-curtain preloader-curtain-bottom"></div>
+    
+    <div class="preloader-content">
+      <!-- Ambient Glow Orbs -->
+      <div class="preloader-glow preloader-glow-1"></div>
+      <div class="preloader-glow preloader-glow-2"></div>
+      
+      <!-- Kinetic Multi-Ring Spinner & Emblem -->
+      <div class="preloader-emblem-wrap">
+        <div class="preloader-ring preloader-ring-outer"></div>
+        <div class="preloader-ring preloader-ring-inner"></div>
+        <div class="preloader-emblem">
+          <img src="images/geenix-logo.jpg" alt="GEENIX" width="56" height="56" class="preloader-logo-img">
+        </div>
+      </div>
+
+      <!-- Brand Wordmark & Tagline Switcher -->
+      <div class="preloader-brand">
+        <span class="preloader-title">GEE<span class="preloader-title-alt">NIX</span></span>
+        <div class="preloader-tagline-wrap">
+          <span class="preloader-tagline-dot"></span>
+          <span id="preloader-tagline" class="preloader-tagline">Innovate. Build. Elevate Your Vision</span>
+          <span class="preloader-tagline-dot"></span>
+        </div>
+      </div>
+
+      <!-- Progress Line & Counter -->
+      <div class="preloader-progress-box">
+        <div class="preloader-progress-track">
+          <div id="preloader-bar" class="preloader-progress-bar"></div>
+        </div>
+        <div class="preloader-meta">
+          <span id="preloader-status" class="preloader-status">INITIALIZING SYSTEMS...</span>
+          <span id="preloader-counter" class="preloader-counter">0%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Skip Navigation ───────────────────────────────── -->
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- ── Header / Navigation ───────────────────────────── -->
+  <header id="hdr" role="banner">
+    <div class="container nav-wrap">
+      <a href="#home" class="nav-logo" aria-label="GEENIX - back to homepage">
+        <img
+          src="images/geenix-logo.jpg"
+          alt="GEENIX"
+          width="40"
+          height="40"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+          class="nav-logo-img"
+        >
+        <span class="logo-text" aria-hidden="true">GEE<em>NIX</em></span>
+      </a>
+
+      <nav aria-label="Primary navigation">
+        <ul class="nav-list" id="nav-list" role="list">
+          <li><a href="#home"      class="nl active" aria-current="page">Home</a></li>
+          <li><a href="#services"  class="nl">Services</a></li>
+          <li><a href="#about"     class="nl">About</a></li>
+          <li><a href="#portfolio" class="nl">Portfolio</a></li>
+          <li><a href="#contact"   class="nl nl-cta">Let's Talk</a></li>
+        </ul>
+        <button
+          class="nav-toggle"
+          id="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-label="Open navigation menu"
+          aria-controls="nav-list"
+        >
+          <span class="bar" aria-hidden="true"></span>
+          <span class="bar" aria-hidden="true"></span>
+          <span class="bar" aria-hidden="true"></span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ── Main Content ──────────────────────────────────── -->
+  <main id="main" tabindex="-1">
+
+    <!-- HERO ──────────────────────────────────────────── -->
+    <section id="home" class="hero" aria-labelledby="hero-heading">
+      <div class="hero-bg" aria-hidden="true">
+        <svg
+          class="circuit-svg"
+          viewBox="0 0 1440 900"
+          preserveAspectRatio="xMidYMid slice"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path class="trace" d="M0 220 H340 L380 260 H700"/>
+          <path class="trace" d="M1440 380 H1080 L1040 340 H750"/>
+          <path class="trace" d="M0 580 H220 L260 540 H560 L600 500 H860"/>
+          <path class="trace" d="M1440 680 H1180 L1140 640 H920"/>
+          <path class="trace" d="M340 0 V220 L380 260 V500"/>
+          <path class="trace" d="M1040 900 V340"/>
+          <path class="trace" d="M860 500 V900"/>
+          <circle class="node" cx="340"  cy="220" r="5"/>
+          <circle class="node" cx="700"  cy="260" r="5"/>
+          <circle class="node" cx="1080" cy="380" r="5"/>
+          <circle class="node" cx="750"  cy="340" r="5"/>
+          <circle class="node" cx="220"  cy="580" r="5"/>
+          <circle class="node" cx="860"  cy="500" r="5"/>
+          <circle class="node" cx="1180" cy="680" r="5"/>
+          <circle class="pad" cx="700"  cy="260" r="9"/>
+          <circle class="pad" cx="750"  cy="340" r="9"/>
+          <circle class="pad" cx="860"  cy="500" r="9"/>
+          <circle class="pad" cx="1180" cy="680" r="9"/>
+        </svg>
+        <div class="glow g1"></div>
+        <div class="glow g2"></div>
+        <div class="scan-line"></div>
+      </div>
+
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <div class="hero-badge r r0" role="status" aria-live="polite">
+            <span class="pulse-dot" aria-hidden="true"></span>
+            Available for New Projects
+          </div>
+          <h1 id="hero-heading" class="r r1">
+            Innovate. Build.<br>
+            <span class="ice-grad">Elevate Your Vision</span>
+          </h1>
+          <p class="hero-p r r2">
+            Modern, fast, and conversion-focused websites built from first principles. From architecture to launch - precision-crafted digital experiences engineered for real performance.
+          </p>
+          <div class="hero-btns r r3">
+            <a href="#contact"   class="btn btn-ice">
+              Start Your Project
+              <i class="fas fa-arrow-right" aria-hidden="true"></i>
+            </a>
+            <a href="#portfolio" class="btn btn-ghost">View Work</a>
+          </div>
+          <div class="hero-stats r r4" aria-label="Key statistics">
+            <div class="hs">
+              <span class="hs-n" aria-label="50 plus projects">50<b aria-hidden="true">+</b></span>
+              <span class="hs-l">Projects</span>
+            </div>
+            <div class="hs-sep" aria-hidden="true"></div>
+            <div class="hs">
+              <span class="hs-n" aria-label="100 percent client satisfaction">100<b aria-hidden="true">%</b></span>
+              <span class="hs-l">Satisfaction</span>
+            </div>
+            <div class="hs-sep" aria-hidden="true"></div>
+            <div class="hs">
+              <span class="hs-n" aria-label="5 plus years experience">5<b aria-hidden="true">+</b></span>
+              <span class="hs-l">Years Exp.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Terminal panel -->
+        <aside class="hero-terminal r r2" aria-label="GEENIX technology stack">
+          <div class="term-bar" aria-hidden="true">
+            <span class="tdot tdot-red"></span>
+            <span class="tdot tdot-yellow"></span>
+            <span class="tdot tdot-ice"></span>
+            <span class="ttitle">geenix ~ stack</span>
+          </div>
+          <div class="term-body" role="list" aria-label="Technologies used">
+            <p class="tl"><span class="tp" aria-hidden="true">$</span> <span class="tc">init</span> <span class="ta">project</span></p>
+            <p class="tl to" role="listitem">✓ React / Next.js</p>
+            <p class="tl to" role="listitem">✓ WordPress &amp; WooCommerce</p>
+            <p class="tl to" role="listitem">✓ Node.js &amp; REST APIs</p>
+            <p class="tl to" role="listitem">✓ Figma UI/UX Design</p>
+            <p class="tl to" role="listitem">✓ SEO &amp; Core Web Vitals</p>
+            <p class="tl to" role="listitem">✓ Mobile-First Responsive</p>
+            <p class="tl"><span class="tp" aria-hidden="true">$</span> <span class="tc">status</span></p>
+            <p class="tl tsuc">▶ Ready to build your vision</p>
+            <p class="tl tcur" aria-hidden="true">_</p>
+          </div>
+        </aside>
+      </div>
+      <div class="hero-cut" aria-hidden="true"></div>
+    </section>
+
+    <!-- SERVICES ──────────────────────────────────────── -->
+    <section id="services" class="sec" aria-labelledby="services-heading">
+      <div class="container">
+        <header class="sec-hd js-reveal">
+          <span class="sec-label" aria-hidden="true">// 01 - What We Build</span>
+          <h2 id="services-heading">Services</h2>
+          <p>End-to-end digital solutions, engineered to perform</p>
+        </header>
+        <div class="svc-grid" role="list">
+
+          <article class="svc-card js-reveal" role="listitem">
+            <span class="svc-n" aria-hidden="true">01</span>
+            <div class="svc-ico ico-ice" aria-hidden="true">
+              <i class="fas fa-laptop-code"></i>
+            </div>
+            <h3>Web Development</h3>
+            <p>Custom websites, web apps, and WordPress builds - architected for speed, scalability, and real-world performance.</p>
+            <ul class="svc-tags" aria-label="Technologies: Web Development">
+              <li>React</li><li>Next.js</li><li>WordPress</li>
+            </ul>
+            <div class="svc-arr" aria-hidden="true">
+              <i class="fas fa-arrow-up-right"></i>
+            </div>
+          </article>
+
+          <article class="svc-card js-reveal" role="listitem">
+            <span class="svc-n" aria-hidden="true">02</span>
+            <div class="svc-ico ico-slate" aria-hidden="true">
+              <i class="fas fa-mobile-screen-button"></i>
+            </div>
+            <h3>Mobile Optimization</h3>
+            <p>Responsive, touch-optimised designs tested across Android, iOS, and every breakpoint for flawless cross-device UX.</p>
+            <ul class="svc-tags" aria-label="Technologies: Mobile Optimization">
+              <li>Responsive</li><li>PWA</li><li>Touch UX</li>
+            </ul>
+            <div class="svc-arr" aria-hidden="true">
+              <i class="fas fa-arrow-up-right"></i>
+            </div>
+          </article>
+
+          <article class="svc-card js-reveal" role="listitem">
+            <span class="svc-n" aria-hidden="true">03</span>
+            <div class="svc-ico ico-ice" aria-hidden="true">
+              <i class="fas fa-pen-ruler"></i>
+            </div>
+            <h3>UI / UX Design</h3>
+            <p>Clean, purposeful interfaces designed around real user journeys - prototyped in Figma and built pixel-perfect.</p>
+            <ul class="svc-tags" aria-label="Technologies: UI/UX Design">
+              <li>Figma</li><li>Wireframes</li><li>Design Systems</li>
+            </ul>
+            <div class="svc-arr" aria-hidden="true">
+              <i class="fas fa-arrow-up-right"></i>
+            </div>
+          </article>
+
+          <article class="svc-card js-reveal" role="listitem">
+            <span class="svc-n" aria-hidden="true">04</span>
+            <div class="svc-ico ico-slate" aria-hidden="true">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h3>SEO &amp; Performance</h3>
+            <p>Core Web Vitals-focused builds, structured data, and speed optimisation that drives organic visibility and growth.</p>
+            <ul class="svc-tags" aria-label="Technologies: SEO and Performance">
+              <li>Core Web Vitals</li><li>Schema</li><li>PageSpeed</li>
+            </ul>
+            <div class="svc-arr" aria-hidden="true">
+              <i class="fas fa-arrow-up-right"></i>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT ─────────────────────────────────────────── -->
+    <section id="about" class="sec sec-alt" aria-labelledby="about-heading">
+      <div class="container about-grid">
+        <div class="about-vis js-reveal" aria-hidden="true">
+          <div class="avis-wrap">
+            <div class="avis-rings">
+              <div class="aring aring-1"></div>
+              <div class="aring aring-2"></div>
+              <div class="avis-logo">
+                <img
+                  src="images/geenix-logo.jpg"
+                  alt="GEENIX"
+                  width="110"
+                  height="110"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </div>
+            </div>
+            <div class="achip achip-1">
+              <i class="fas fa-star" aria-hidden="true"></i> 5.0 Rating
+            </div>
+            <div class="achip achip-2">
+              <i class="fas fa-bolt" aria-hidden="true"></i> Fast Delivery
+            </div>
+            <div class="achip achip-3">
+              <i class="fas fa-shield-halved" aria-hidden="true"></i> Clean Code
+            </div>
+          </div>
+        </div>
+
+        <div class="about-txt js-reveal">
+          <span class="sec-label" aria-hidden="true">// 02 - Who We Are</span>
+          <h2 id="about-heading">About <span class="ice-grad">GEENIX</span></h2>
+          <p>We are passionate web developers dedicated to crafting high-performance digital solutions for businesses and individuals. Every project is built from scratch with a focus on speed, accessibility, and measurable outcomes.</p>
+          <p>Our process is transparent, collaborative, and precise - from first wireframe to deployment and beyond.</p>
+          <div class="ap-grid" aria-label="Our process">
+            <div class="ap-item">
+              <div class="ap-item-header">
+                <div class="ap-icon-box">
+                  <i class="fas fa-lightbulb" aria-hidden="true"></i>
+                </div>
+                <span class="ap-n" aria-hidden="true">01</span>
+              </div>
+              <div class="ap-item-content">
+                <strong>Discover</strong>
+                <span>Understand your goals</span>
+              </div>
+            </div>
+            <div class="ap-item">
+              <div class="ap-item-header">
+                <div class="ap-icon-box">
+                  <i class="fas fa-layer-group" aria-hidden="true"></i>
+                </div>
+                <span class="ap-n" aria-hidden="true">02</span>
+              </div>
+              <div class="ap-item-content">
+                <strong>Design</strong>
+                <span>Prototype &amp; iterate</span>
+              </div>
+            </div>
+            <div class="ap-item">
+              <div class="ap-item-header">
+                <div class="ap-icon-box">
+                  <i class="fas fa-code" aria-hidden="true"></i>
+                </div>
+                <span class="ap-n" aria-hidden="true">03</span>
+              </div>
+              <div class="ap-item-content">
+                <strong>Build</strong>
+                <span>Performance-first code</span>
+              </div>
+            </div>
+            <div class="ap-item">
+              <div class="ap-item-header">
+                <div class="ap-icon-box">
+                  <i class="fas fa-rocket" aria-hidden="true"></i>
+                </div>
+                <span class="ap-n" aria-hidden="true">04</span>
+              </div>
+              <div class="ap-item-content">
+                <strong>Launch</strong>
+                <span>Deploy &amp; support</span>
+              </div>
+            </div>
+          </div>
+          <a href="#contact" class="btn btn-ice btn-about">
+            Work With Us
+            <i class="fas fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO ─────────────────────────────────────── -->
+    <section id="portfolio" class="sec" aria-labelledby="portfolio-heading">
+      <div class="container">
+        <header class="sec-hd js-reveal">
+          <span class="sec-label" aria-hidden="true">// 03 - Selected Work</span>
+          <h2 id="portfolio-heading">Portfolio</h2>
+          <p>Projects delivered across industries and platforms</p>
+        </header>
+        <div class="port-grid" role="list">
+
+          <article class="port-card js-reveal" role="listitem">
+            <div class="port-ico" aria-hidden="true">
+              <i class="fas fa-building"></i>
+            </div>
+            <span class="port-type">Business</span>
+            <h3>Business Websites</h3>
+            <p>Professional, conversion-focused websites for companies, startups, and organisations that need to make a powerful first impression online.</p>
+            <div class="port-tags" aria-label="Stack: Business Websites">
+              <span>Branding</span><span>CMS</span><span>SEO</span>
+            </div>
+            <span class="port-n" aria-hidden="true">01</span>
+          </article>
+
+          <article class="port-card js-reveal" role="listitem">
+            <div class="port-ico" aria-hidden="true">
+              <i class="fas fa-circle-user"></i>
+            </div>
+            <span class="port-type">Portfolio</span>
+            <h3>Personal Portfolios</h3>
+            <p>Distinctive, animated portfolios that tell your story and showcase your best work to future employers and clients.</p>
+            <div class="port-tags" aria-label="Stack: Personal Portfolios">
+              <span>React</span><span>Animation</span>
+            </div>
+            <span class="port-n" aria-hidden="true">02</span>
+          </article>
+
+          <article class="port-card js-reveal" role="listitem">
+            <div class="port-ico" aria-hidden="true">
+              <i class="fas fa-bag-shopping"></i>
+            </div>
+            <span class="port-type">E-Commerce</span>
+            <h3>Online Stores</h3>
+            <p>Custom e-commerce with secure checkout flows and mobile-optimised product pages that convert browsers into buyers.</p>
+            <div class="port-tags" aria-label="Stack: Online Stores">
+              <span>WooCommerce</span><span>Stripe</span>
+            </div>
+            <span class="port-n" aria-hidden="true">03</span>
+          </article>
+
+          <article class="port-card js-reveal" role="listitem">
+            <div class="port-ico" aria-hidden="true">
+              <i class="fas fa-bullseye"></i>
+            </div>
+            <span class="port-type">Marketing</span>
+            <h3>Landing Pages</h3>
+            <p>High-converting landing pages for campaigns, launches, and events - built around measurable goals and real user behaviour.</p>
+            <div class="port-tags" aria-label="Stack: Landing Pages">
+              <span>CRO</span><span>Analytics</span>
+            </div>
+            <span class="port-n" aria-hidden="true">04</span>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT ───────────────────────────────────────── -->
+    <section id="contact" class="sec sec-alt" aria-labelledby="contact-heading">
+      <div class="container">
+        <header class="sec-hd js-reveal">
+          <span class="sec-label" aria-hidden="true">// 04 - Get In Touch</span>
+          <h2 id="contact-heading">Let's Build Something</h2>
+          <p>Have a project in mind? We'd love to hear about it.</p>
+        </header>
+        <div class="contact-grid">
+          <div class="cinfo js-reveal">
+            <h3>Reach Out Directly</h3>
+            <p>Whether you have a detailed brief or just a rough idea - reach out and let's figure out how to make it a reality.</p>
+            <address>
+              <ul class="cinfo-list" aria-label="Contact information">
+                <li>
+                  <div class="ci-ico" aria-hidden="true">
+                    <i class="fas fa-envelope"></i>
+                  </div>
+                  <div>
+                    <span class="ci-lbl">Email</span>
+                    <a href="mailto:hello@geenix.live" aria-label="Send email to GEENIX">
+                      hello@geenix.live
+                    </a>
+                  </div>
+                </li>
+                <li>
+                  <div class="ci-ico" aria-hidden="true">
+                    <i class="fas fa-phone-flip"></i>
+                  </div>
+                  <div>
+                    <span class="ci-lbl">Phone</span>
+                    <a href="tel:+94718934434" aria-label="Call GEENIX on +94 71 893 4434">
+                      +94 71 893 4434
+                    </a>
+                  </div>
+                </li>
+                <li>
+                  <div class="ci-ico" aria-hidden="true">
+                    <i class="fas fa-clock"></i>
+                  </div>
+                  <div>
+                    <span class="ci-lbl">Response</span>
+                    <span>Within 24 hours</span>
+                  </div>
+                </li>
+              </ul>
+            </address>
+          </div>
+
+          <form
+            action="https://api.web3forms.com/submit"
+            method="POST"
+            class="cform js-reveal"
+            id="cform"
+            novalidate
+            aria-label="Contact form"
+          >
+            <!-- Web3Forms access key -->
+            <input type="hidden" name="access_key" value="7f58ff0a-988e-4a76-bf2b-fff3e9b08784">
+            <input type="hidden" name="from_name" value="GEENIX Website">
+            <!-- Honeypot for spam prevention -->
+            <input
+              type="checkbox"
+              name="botcheck"
+              class="sr-only"
+              tabindex="-1"
+              aria-hidden="true"
+              autocomplete="off"
+            >
+
+            <div class="form-row">
+              <div class="fg">
+                <label for="fn">
+                  Name
+                  <span class="req" aria-label="required">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="fn"
+                  name="name"
+                  placeholder="Your name"
+                  required
+                  autocomplete="name"
+                  aria-required="true"
+                  aria-describedby="fn-err"
+                  minlength="2"
+                  maxlength="80"
+                >
+                <span id="fn-err" class="field-err" role="alert" aria-live="polite" hidden></span>
+              </div>
+              <div class="fg">
+                <label for="fe">
+                  Email
+                  <span class="req" aria-label="required">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="fe"
+                  name="email"
+                  placeholder="you@example.com"
+                  required
+                  autocomplete="email"
+                  aria-required="true"
+                  aria-describedby="fe-err"
+                  maxlength="100"
+                >
+                <span id="fe-err" class="field-err" role="alert" aria-live="polite" hidden></span>
+              </div>
+            </div>
+
+            <div class="fg">
+              <label for="fs">Subject</label>
+              <input
+                type="text"
+                id="fs"
+                name="subject"
+                placeholder="Project type or topic"
+                autocomplete="off"
+                maxlength="120"
+              >
+            </div>
+
+            <div class="fg">
+              <label for="fm">
+                Message
+                <span class="req" aria-label="required">*</span>
+              </label>
+              <textarea
+                id="fm"
+                name="message"
+                rows="5"
+                placeholder="Tell us about your project, goals, and timeline…"
+                required
+                aria-required="true"
+                aria-describedby="fm-err"
+                minlength="10"
+                maxlength="2000"
+              ></textarea>
+              <span id="fm-err" class="field-err" role="alert" aria-live="polite" hidden></span>
+            </div>
+
+            <button type="submit" class="btn btn-ice btn-full" id="sub-btn" aria-busy="false">
+              <span class="blbl">Send Message</span>
+              <i class="fas fa-paper-plane" aria-hidden="true"></i>
+            </button>
+
+            <div class="fstat fsucc" id="fsucc" hidden role="alert" aria-atomic="true">
+              <i class="fas fa-circle-check" aria-hidden="true"></i>
+              <div>
+                <strong>Message sent!</strong>
+                <span>We'll respond within 24 hours.</span>
+              </div>
+            </div>
+            <div class="fstat ferr" id="ferr" hidden role="alert" aria-atomic="true">
+              <i class="fas fa-circle-exclamation" aria-hidden="true"></i>
+              <div>
+                <strong>Failed to send.</strong>
+                <span>Please email us directly at <a href="mailto:geesithmanjanaupa2001@gmail.com">geesithmanjanaupa2001@gmail.com</a></span>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ────────────────────────────────────────── -->
+  <footer role="contentinfo">
+    <div class="container foot-top">
+      <div class="foot-brand">
+        <a href="#home" class="nav-logo" aria-label="GEENIX - back to top of page">
+          <img
+            src="images/geenix-logo.jpg"
+            alt="GEENIX logo"
+            width="34"
+            height="34"
+            loading="lazy"
+            decoding="async"
+            class="nav-logo-img"
+          >
+          <span class="logo-text" aria-hidden="true">GEE<em>NIX</em></span>
+        </a>
+        <p>Precision-crafted digital experiences that innovate, build, and elevate.</p>
+        <a href="https://www.geenix.live" class="fl foot-url" aria-label="Visit geenix.live">
+          <i class="fas fa-globe" aria-hidden="true"></i> geenix.live
+        </a>
+      </div>
+
+      <nav class="foot-nav" aria-label="Footer navigation">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="#home"      class="fl">Home</a></li>
+          <li><a href="#services"  class="fl">Services</a></li>
+          <li><a href="#about"     class="fl">About</a></li>
+          <li><a href="#portfolio" class="fl">Portfolio</a></li>
+          <li><a href="#contact"   class="fl">Contact</a></li>
+        </ul>
+      </nav>
+
+      <address class="foot-ct" aria-label="Contact details">
+        <h4>Contact</h4>
+        <a href="mailto:hello@geenix.live" class="fl" aria-label="Email GEENIX">
+          hello@geenix.live
+        </a>
+        <a href="tel:+94718934434" class="fl" aria-label="Call GEENIX">
+          +94 71 893 4434
+        </a>
+      </address>
+    </div>
+
+    <div class="foot-bot">
+      <div class="container foot-bot-in">
+        <span>Made with <span aria-label="love">❤️</span> &copy; <span id="fyear"></span> GEENIX. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── Cookie Consent Banner ──────────────────────────── -->
+  <div
+    id="cookie-banner"
+    class="cookie-banner"
+    role="dialog"
+    aria-label="Cookie consent"
+    aria-describedby="cookie-msg"
+    hidden
+  >
+    <div class="cookie-inner">
+      <div class="cookie-icon" aria-hidden="true">
+        <i class="fas fa-cookie-bite"></i>
+      </div>
+      <div class="cookie-body">
+        <p id="cookie-msg">
+          We use cookies to enhance your browsing experience and analyse site traffic. By clicking <strong>"Accept"</strong>, you consent to our use of cookies.
+        </p>
+      </div>
+      <div class="cookie-actions">
+        <button type="button" class="btn btn-ice cookie-accept" id="cookie-accept">
+          Accept
+        </button>
+        <button type="button" class="btn btn-ghost cookie-decline" id="cookie-decline">
+          Decline
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Back to Top ───────────────────────────────────── -->
+  <button
+    id="btt"
+    type="button"
+    aria-label="Back to top of page"
+    title="Back to top"
+  >
+    <i class="fas fa-chevron-up" aria-hidden="true"></i>
+  </button>
+
+  <!-- ── Scripts ───────────────────────────────────────────────── -->
+  <script src="script.js" defer></script>
+
+  <!-- ── AI Chatbot ───────────────────────────────────────────── -->
+  <link rel="stylesheet" href="chatbot.css">
+  <script src="chatbot.js" defer></script>
+</body>
+</html>

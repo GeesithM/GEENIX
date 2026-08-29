@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>404 — Page Not Found | GEENIX</title>
+  <meta name="description" content="The page you're looking for doesn't exist. Head back to GEENIX to explore our web development and digital solutions.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta name="color-scheme" content="dark">
+  <link rel="icon" href="images/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="images/favicon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy-1: #0a0a0a;
+      --navy-2: #111111;
+      --navy-3: #1a1a1a;
+      --ice: #c8a44e;
+      --ice-hi: #e4c76a;
+      --ice-lo: #8a6e2f;
+      --ice-glow: rgba(200 164 78 / 0.22);
+      --silver: #b8c4cc;
+      --tw: #f0ece4;
+      --t2: #9a9590;
+      --t3: #5a5550;
+      --bdr2: rgba(200 164 78 / 0.18);
+      --ff-disp: 'Outfit', sans-serif;
+      --ff-body: 'Inter', sans-serif;
+      --r-sm: 8px;
+    }
+
+    html { color-scheme: dark; }
+
+    body {
+      background: var(--navy-1);
+      color: var(--tw);
+      font-family: var(--ff-body);
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      -webkit-font-smoothing: antialiased;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Subtle background glow */
+    body::before {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: rgba(200 164 78 / 0.04);
+      filter: blur(120px);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .error-container {
+      position: relative;
+      z-index: 1;
+      max-width: 520px;
+    }
+
+    .error-code {
+      font-family: var(--ff-disp);
+      font-size: clamp(6rem, 20vw, 10rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      background: linear-gradient(135deg, var(--silver) 0%, var(--ice) 40%, var(--ice-hi) 70%, var(--silver) 100%);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmer 4s ease infinite;
+      margin-bottom: 1rem;
+      user-select: none;
+    }
+
+    .error-title {
+      font-family: var(--ff-disp);
+      font-size: clamp(1.4rem, 4vw, 1.8rem);
+      font-weight: 700;
+      color: var(--tw);
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.01em;
+    }
+
+    .error-desc {
+      font-size: 1rem;
+      color: var(--t2);
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+      max-width: 420px;
+      margin-inline: auto;
+    }
+
+    .btn-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.75rem 1.75rem;
+      font-family: var(--ff-disp);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: var(--r-sm);
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+      min-height: 44px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--ice) 0%, var(--ice-hi) 50%, var(--ice) 100%);
+      background-size: 200% 200%;
+      color: var(--navy-1);
+      animation: shimmer 3s ease infinite;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-home:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(200 164 78 / 0.35), 0 0 60px rgba(200 164 78 / 0.15);
+    }
+    .btn-home:focus-visible {
+      outline: 2px solid var(--ice);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    /* Shine sweep */
+    .btn-home::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -75%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255 255 255 / 0.25), transparent);
+      transform: skewX(-20deg);
+      pointer-events: none;
+    }
+    .btn-home:hover::after {
+      animation: shine-sweep 0.6s ease forwards;
+    }
+
+    .logo-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 2rem;
+      text-decoration: none;
+      color: inherit;
+    }
+    .logo-link img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      border-radius: var(--r-sm);
+      border: 1px solid var(--bdr2);
+      background: var(--navy-2);
+    }
+    .logo-text {
+      font-family: var(--ff-disp);
+      font-size: 1.3rem;
+      font-weight: 800;
+      letter-spacing: 4px;
+      color: var(--silver);
+      text-transform: uppercase;
+      line-height: 1;
+    }
+    .logo-text em {
+      color: var(--ice);
+      font-style: normal;
+    }
+
+    @keyframes shimmer {
+      0%   { background-position: 0% 50% }
+      50%  { background-position: 100% 50% }
+      100% { background-position: 0% 50% }
+    }
+    @keyframes shine-sweep {
+      to { left: 125% }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="error-container">
+    <a href="/" class="logo-link" aria-label="GEENIX — back to homepage">
+      <img src="images/geenix-logo.jpg" alt="GEENIX" width="40" height="40" decoding="async">
+      <span class="logo-text" aria-hidden="true">GEE<em>NIX</em></span>
+    </a>
+    <div class="error-code" aria-hidden="true">404</div>
+    <h1 class="error-title">Page Not Found</h1>
+    <p class="error-desc">
+      The page you're looking for doesn't exist or has been moved. Let's get you back on track.
+    </p>
+    <a href="/" class="btn-home">
+      Back to Home
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+</body>
+</html>
