@@ -177,6 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
      HEADER SCROLL & SCROLL-SPY
      ══════════════════════════════════════════════════════════════ */
   const HDR_HEIGHT    = 68;  // matches CSS .nav-wrap height
+  const HDR_OFFSET    = 76;  // scroll offset ensuring section headers are never obscured
   const SCROLL_GLASS  = 40;  // px before header gets glass bg
   const SCROLL_BTT    = 320; // px before back-to-top appears
 
@@ -310,7 +311,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const top = href === '#'
         ? 0
-        : target.getBoundingClientRect().top + window.scrollY - HDR_HEIGHT;
+        : target.getBoundingClientRect().top + window.scrollY - HDR_OFFSET;
 
       window.scrollTo({ top, behavior: 'smooth' });
 
@@ -368,6 +369,24 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     /* Immediately reveal all elements for reduced-motion users */
     $$('.js-reveal').forEach(el => el.classList.add('revealed'));
+  }
+
+  /* ══════════════════════════════════════════════════════════════
+     FAQ ACCORDION — Exclusive expansion
+     ══════════════════════════════════════════════════════════════ */
+  const faqItems = $$('.faq-item');
+  if (faqItems.length) {
+    faqItems.forEach(item => {
+      item.addEventListener('toggle', () => {
+        if (item.open) {
+          faqItems.forEach(other => {
+            if (other !== item && other.open) {
+              other.open = false;
+            }
+          });
+        }
+      });
+    });
   }
 
   /* ══════════════════════════════════════════════════════════════

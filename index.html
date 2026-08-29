@@ -12,6 +12,13 @@
   <!-- ── Primary Meta ──────────────────────────────────── -->
   <title>GEENIX | Web Development & Digital Solutions - Innovate. Build. Elevate.</title>
   <meta name="description" content="GEENIX delivers precision-crafted web development, UI/UX design, SEO, and digital solutions that elevate your brand. Modern, high-performance websites built for businesses and individuals.">
+  <meta name="keywords" content="web development Sri Lanka, web developer Colombo, freelance web developer, UI UX design, React web developer, Next.js development, WordPress website, SEO optimization, high performance web design, custom website solutions, GEENIX">
+
+  <!-- ── Geo Targeting Meta ─────────────────────────────── -->
+  <meta name="geo.region" content="LK">
+  <meta name="geo.placename" content="Colombo">
+  <meta name="geo.position" content="6.9271;79.8612">
+  <meta name="ICBM" content="6.9271, 79.8612">
 
   <meta name="author" content="GEENIX">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -19,6 +26,8 @@
   <meta name="theme-color" content="#0a0a0a">
   <meta name="color-scheme" content="dark">
   <link rel="canonical" href="https://www.geenix.live/">
+  <link rel="alternate" hreflang="en" href="https://www.geenix.live/">
+  <link rel="alternate" hreflang="x-default" href="https://www.geenix.live/">
 
   <!-- ── Open Graph ─────────────────────────────────────── -->
   <meta property="og:site_name" content="GEENIX">
@@ -66,22 +75,185 @@
   <!-- ── Styles ────────────────────────────────────────── -->
   <link rel="stylesheet" href="style.css">
 
-  <!-- ── Structured Data ───────────────────────────────── -->
+  <!-- ── Structured Data (Schema.org @graph) ──────────── -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "GEENIX",
-    "url": "https://www.geenix.live/",
-    "logo": "https://www.geenix.live/images/geenix-logo.jpg",
-    "image": "https://www.geenix.live/images/geenix-og.jpg",
-    "telephone": "+94718934434",
-    "email": "geesithmanjanaupa2001@gmail.com",
-    "description": "Precision-crafted web development, UI/UX design, SEO, and digital solutions. Innovate. Build. Elevate.",
-    "priceRange": "$$",
-    "areaServed": "Worldwide",
-    "slogan": "Innovate. Build. Elevate.",
-    "serviceType": ["Web Development", "UI/UX Design", "Mobile Optimization", "SEO"]
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://www.geenix.live/#website",
+        "url": "https://www.geenix.live/",
+        "name": "GEENIX",
+        "description": "Precision-crafted web development, UI/UX design, SEO, and digital solutions. Innovate. Build. Elevate.",
+        "publisher": {
+          "@id": "https://www.geenix.live/#organization"
+        },
+        "inLanguage": "en-US"
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://www.geenix.live/#organization",
+        "name": "GEENIX",
+        "alternateName": "GEENIX Web Development & Digital Solutions",
+        "url": "https://www.geenix.live/",
+        "logo": "https://www.geenix.live/images/geenix-logo.jpg",
+        "image": "https://www.geenix.live/images/geenix-og.jpg",
+        "telephone": "+94718934434",
+        "email": "hello@geenix.live",
+        "description": "GEENIX delivers precision-crafted web development, UI/UX design, SEO, and digital solutions that elevate your brand. Modern, high-performance websites built for businesses and individuals.",
+        "priceRange": "$$",
+        "currenciesAccepted": "USD, LKR, EUR, GBP",
+        "paymentAccepted": "Credit Card, Bank Transfer, Stripe",
+        "slogan": "Innovate. Build. Elevate.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Colombo",
+          "addressCountry": "LK"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 6.9271,
+          "longitude": 79.8612
+        },
+        "areaServed": [
+          {
+            "@type": "Country",
+            "name": "Sri Lanka"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Worldwide"
+          }
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Digital Solutions & Web Development Services",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Web Development",
+                "description": "Custom websites, web apps, and WordPress builds architected for speed, scalability, and real-world performance using React, Next.js, and Node.js."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Mobile Optimization",
+                "description": "Responsive, touch-optimised designs tested across Android, iOS, and all breakpoints for flawless cross-device UX and Progressive Web Apps (PWA)."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "UI/UX Design",
+                "description": "Clean, purposeful interfaces designed around real user journeys, prototyped in Figma and built pixel-perfect with modern design systems."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "SEO & Performance Optimization",
+                "description": "Core Web Vitals-focused builds, structured data, schema markup, and speed optimisation that drives organic visibility and top search rankings."
+              }
+            }
+          ]
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://www.geenix.live/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What web development and design services does GEENIX provide?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "GEENIX delivers end-to-end digital solutions including custom web development (React, Next.js, WordPress, Node.js), mobile-first responsive optimization and Progressive Web Apps (PWAs), UI/UX design with Figma prototyping, and technical SEO with Core Web Vitals performance optimization."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much does a custom website development project cost?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Project pricing is tailored to your specific requirements, project scope, design complexity, and feature set. We offer competitive, transparent pricing for startups, small businesses, and enterprises. Contact us for a free, detailed project consultation and quote."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the typical timeline for building and launching a website?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A standard business website or landing page typically takes 1 to 3 weeks from discovery to deployment. More complex web applications, custom platforms, or e-commerce stores generally take 3 to 6 weeks depending on features and revision cycles."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are all GEENIX websites optimized for mobile and SEO?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Every website built by GEENIX is engineered from first principles with responsive mobile-first architecture, fast load times for Google Core Web Vitals, structured schema data, semantic HTML5, and clean on-page SEO best practices."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does the GEENIX development and design process work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Our 4-step workflow begins with Discovery (understanding your goals and audience), moves to Design (Figma wireframing and prototyping), proceeds to Build (clean, performance-first code), and finishes with Launch (deployment, SEO setup, and post-launch support)."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://www.geenix.live/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.geenix.live/#home"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Services",
+            "item": "https://www.geenix.live/#services"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "About",
+            "item": "https://www.geenix.live/#about"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Portfolio",
+            "item": "https://www.geenix.live/#portfolio"
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "name": "FAQ",
+            "item": "https://www.geenix.live/#faq"
+          },
+          {
+            "@type": "ListItem",
+            "position": 6,
+            "name": "Contact",
+            "item": "https://www.geenix.live/#contact"
+          }
+        ]
+      }
+    ]
   }
   </script>
 </head>
@@ -154,6 +326,7 @@
           <li><a href="#services"  class="nl">Services</a></li>
           <li><a href="#about"     class="nl">About</a></li>
           <li><a href="#portfolio" class="nl">Portfolio</a></li>
+          <li><a href="#faq"       class="nl">FAQ</a></li>
           <li><a href="#contact"   class="nl nl-cta">Let's Talk</a></li>
         </ul>
         <button
@@ -508,11 +681,76 @@
       </div>
     </section>
 
-    <!-- CONTACT ───────────────────────────────────────── -->
-    <section id="contact" class="sec sec-alt" aria-labelledby="contact-heading">
+    <!-- FAQ ────────────────────────────────────────────── -->
+    <section id="faq" class="sec sec-alt" aria-labelledby="faq-heading">
       <div class="container">
         <header class="sec-hd js-reveal">
-          <span class="sec-label" aria-hidden="true">// 04 - Get In Touch</span>
+          <span class="sec-label" aria-hidden="true">// 04 - Got Questions?</span>
+          <h2 id="faq-heading">Frequently Asked <span class="ice-grad">Questions</span></h2>
+          <p>Everything you need to know about our services, pricing, and process</p>
+        </header>
+
+        <div class="faq-list js-reveal" role="region" aria-label="Frequently Asked Questions">
+          
+          <details class="faq-item" open>
+            <summary class="faq-summary">
+              <span class="faq-question">What web development and design services does GEENIX provide?</span>
+              <span class="faq-icon" aria-hidden="true"><i class="fas fa-chevron-down"></i></span>
+            </summary>
+            <div class="faq-content">
+              <p>GEENIX delivers end-to-end digital solutions including custom web development (React, Next.js, WordPress, Node.js), mobile-first responsive optimization and Progressive Web Apps (PWAs), UI/UX design with Figma prototyping, and technical SEO with Core Web Vitals performance optimization.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-summary">
+              <span class="faq-question">How much does a custom website development project cost?</span>
+              <span class="faq-icon" aria-hidden="true"><i class="fas fa-chevron-down"></i></span>
+            </summary>
+            <div class="faq-content">
+              <p>Project pricing is customized based on your specific requirements, project scope, design complexity, and feature set. We offer competitive and transparent pricing for businesses and individuals. <a href="#contact">Contact us</a> for a free, detailed project consultation and quote.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-summary">
+              <span class="faq-question">What is the typical timeline for building and launching a website?</span>
+              <span class="faq-icon" aria-hidden="true"><i class="fas fa-chevron-down"></i></span>
+            </summary>
+            <div class="faq-content">
+              <p>A standard business website or landing page typically takes 1 to 3 weeks from discovery to deployment. More complex web applications, custom platforms, or e-commerce stores generally take 3 to 6 weeks depending on features and revision cycles.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-summary">
+              <span class="faq-question">Are all GEENIX websites optimized for mobile and SEO?</span>
+              <span class="faq-icon" aria-hidden="true"><i class="fas fa-chevron-down"></i></span>
+            </summary>
+            <div class="faq-content">
+              <p>Yes. Every website built by GEENIX is engineered from first principles with responsive mobile-first architecture, fast load times for Google Core Web Vitals, structured schema data, semantic HTML5, and clean on-page SEO best practices.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-summary">
+              <span class="faq-question">How does the GEENIX development and design process work?</span>
+              <span class="faq-icon" aria-hidden="true"><i class="fas fa-chevron-down"></i></span>
+            </summary>
+            <div class="faq-content">
+              <p>Our 4-step workflow begins with <strong>Discover</strong> (understanding your goals and audience), moves to <strong>Design</strong> (Figma wireframing and prototyping), proceeds to <strong>Build</strong> (clean, performance-first code), and finishes with <strong>Launch</strong> (deployment, SEO setup, and post-launch support).</p>
+            </div>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT ───────────────────────────────────────── -->
+    <section id="contact" class="sec" aria-labelledby="contact-heading">
+      <div class="container">
+        <header class="sec-hd js-reveal">
+          <span class="sec-label" aria-hidden="true">// 05 - Get In Touch</span>
           <h2 id="contact-heading">Let's Build Something</h2>
           <p>Have a project in mind? We'd love to hear about it.</p>
         </header>
@@ -699,11 +937,12 @@
 
       <nav class="foot-nav" aria-label="Footer navigation">
         <h4>Navigate</h4>
-        <ul>
+        <ul class="foot-nav-list">
           <li><a href="#home"      class="fl">Home</a></li>
           <li><a href="#services"  class="fl">Services</a></li>
           <li><a href="#about"     class="fl">About</a></li>
           <li><a href="#portfolio" class="fl">Portfolio</a></li>
+          <li><a href="#faq"       class="fl">FAQ</a></li>
           <li><a href="#contact"   class="fl">Contact</a></li>
         </ul>
       </nav>

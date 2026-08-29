@@ -108,7 +108,7 @@
   position: fixed;
   bottom: calc(1.75rem + 52px + 12px);
   inset-inline-end: 1.75rem;
-  z-index: 501;
+  z-index: 99999;
   width: 400px;
   max-height: 560px;
   display: flex;
@@ -407,11 +407,11 @@
 
 .chatbot-input {
   flex: 1;
-  min-height: 38px;
-  max-height: 100px;
-  padding: 0.55rem 0.85rem;
+  min-height: 40px;
+  max-height: 110px;
+  padding: 0.6rem 0.85rem;
   font-family: var(--ff-body);
-  font-size: 0.85rem;
+  font-size: 16px; /* 16px prevents mobile browser auto-zoom */
   line-height: 1.5;
   color: var(--tw);
   background: var(--navy-3);
@@ -424,6 +424,7 @@
 }
 .chatbot-input::placeholder {
   color: var(--t3);
+  font-size: 0.9rem;
 }
 .chatbot-input:focus {
   border-color: var(--bdr2);
@@ -431,13 +432,13 @@
 }
 
 .chatbot-send {
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   border-radius: var(--r-sm);
   background: var(--ice);
   border: none;
   color: var(--navy-1);
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -515,39 +516,104 @@
 /* The btt button stays in its original position.
    The chatbot trigger sits beside it to the left. */
 
+/* ── Body lock when chatbot is open on mobile ────────────────────── */
+@media (max-width: 640px) {
+  body.cb-open {
+    overflow: hidden !important;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+  }
+}
+
 /* ── Responsive ──────────────────────────────────────────────────── */
 @media (max-width: 640px) {
   .chatbot-trigger {
     /* Stack above the back-to-top button (44px + gap) */
     bottom: calc(1.75rem + 44px + 0.6rem);
     inset-inline-end: 1.75rem;
-    width: 46px;
-    height: 46px;
-    font-size: 1.2rem;
+    width: 48px;
+    height: 48px;
+    font-size: 1.25rem;
+    z-index: 99998;
   }
 
   .chatbot-window {
-    inset: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     bottom: 0;
-    width: 100%;
-    max-height: 100%;
-    height: 100%;
+    width: 100vw;
+    max-width: 100vw;
+    height: 100dvh;
+    max-height: 100dvh;
     border-radius: 0;
+    border: none;
+    z-index: 99999;
     transform: translateY(100%);
+    display: flex;
+    flex-direction: column;
+    background: rgba(10, 10, 10, 0.98);
   }
   .chatbot-window.open {
     transform: translateY(0);
+  }
+
+  .chatbot-header {
+    padding: calc(0.85rem + env(safe-area-inset-top, 0px)) 1rem 0.85rem;
+    background: rgba(15, 15, 15, 0.95);
+    border-bottom: 1px solid var(--bdr2);
+  }
+
+  .chatbot-header-title {
+    font-size: 0.95rem;
+  }
+
+  .chatbot-header-close {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--r-sm);
+    background: rgba(200, 164, 78, 0.15);
+    border: 1px solid var(--bdr2);
+    color: var(--ice);
+    font-size: 1.15rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .chatbot-header-close:active {
+    background: var(--ice);
+    color: var(--navy-1);
+    transform: scale(0.95);
+  }
+
+  .chatbot-messages {
+    padding: 1rem;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .chatbot-input-wrap {
+    padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom, 0px));
+    background: rgba(12, 12, 12, 0.95);
+    border-top: 1px solid var(--bdr2);
+  }
+
+  .chatbot-input {
+    font-size: 16px !important; /* Forces 16px on mobile to prevent iOS/Android zoom */
+    min-height: 42px;
   }
 }
 
 @media (max-width: 480px) {
   .chatbot-trigger {
     /* Stack above the back-to-top button (40px + gap) */
-    bottom: calc(1rem + env(safe-area-inset-bottom) + 40px + 0.6rem);
+    bottom: calc(1rem + env(safe-area-inset-bottom, 0px) + 40px + 0.6rem);
     inset-inline-end: 1rem;
-    width: 42px;
-    height: 42px;
-    font-size: 1.1rem;
+    width: 44px;
+    height: 44px;
+    font-size: 1.15rem;
   }
 }
 

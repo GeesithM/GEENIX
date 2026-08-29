@@ -216,9 +216,15 @@ BEHAVIOR GUIDELINES:
       }
     });
 
-    // Close when clicking outside the chat window (but not on the trigger)
+    // Close when clicking outside the chat window (but not on the trigger or inside window)
     document.addEventListener('click', (e) => {
-      if (isOpen && !elements.window.contains(e.target) && !elements.trigger.contains(e.target)) {
+      if (!isOpen) return;
+
+      const path = e.composedPath ? e.composedPath() : [];
+      const isInsideWindow = path.includes(elements.window) || elements.window.contains(e.target);
+      const isInsideTrigger = path.includes(elements.trigger) || elements.trigger.contains(e.target);
+
+      if (!isInsideWindow && !isInsideTrigger) {
         closeChat();
       }
     });
@@ -233,6 +239,7 @@ BEHAVIOR GUIDELINES:
 
   function openChat() {
     isOpen = true;
+    document.body.classList.add('cb-open');
     elements.trigger.classList.add('active');
     elements.trigger.setAttribute('aria-label', 'Close AI chat assistant');
     elements.window.classList.add('open');
@@ -244,6 +251,7 @@ BEHAVIOR GUIDELINES:
 
   function closeChat() {
     isOpen = false;
+    document.body.classList.remove('cb-open');
     elements.trigger.classList.remove('active');
     elements.trigger.setAttribute('aria-label', 'Open AI chat assistant');
     elements.window.classList.remove('open');
@@ -377,7 +385,9 @@ BEHAVIOR GUIDELINES:
     // Attach quick-action listeners if present
     if (showQuickActions) {
       msg.querySelectorAll('.cb-quick-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
           const q = btn.textContent;
           elements.input.value = q;
           handleSend();
