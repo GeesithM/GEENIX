@@ -638,12 +638,23 @@
 
   .hero h1 {
     font-family: var(--ff-disp);
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--t2);
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-tagline {
+    font-family: var(--ff-disp);
     font-size: clamp(2.4rem, 5.2vw, 4rem);
     font-weight: 800;
     line-height: 1.1;
     letter-spacing: -0.02em;
     color: var(--tw);
     margin-bottom: 1.25rem;
+    display: block;
   }
 
   /* Gold gradient text */
