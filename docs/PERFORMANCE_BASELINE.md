@@ -31,10 +31,10 @@
 | Resource | Type | Transfer Size | Raw Size | TTFB | Compression |
 |---|---|---|---|---|---|
 | **`/` (index.html)** | Document | 9.75 KB | 51.17 KB | 480 ms | Brotli (`br`) |
-| **`style.css`** | CSS | 12.09 KB | 57.51 KB | 132 ms | Brotli (`br`) |
-| **`script.js`** | JavaScript | 6.14 KB | 23.72 KB | 127 ms | Brotli (`br`) |
-| **`chatbot.css`** | CSS | 3.70 KB | 16.16 KB | 127 ms | Brotli (`br`) |
-| **`chatbot.js`** | JavaScript | 5.98 KB | 21.55 KB | 126 ms | Brotli (`br`) |
+| **`css/style.css`** | CSS | 12.09 KB | 57.51 KB | 132 ms | Brotli (`br`) |
+| **`js/script.js`** | JavaScript | 6.14 KB | 23.72 KB | 127 ms | Brotli (`br`) |
+| **`css/chatbot.css`** | CSS | 3.70 KB | 16.16 KB | 127 ms | Brotli (`br`) |
+| **`js/chatbot.js`** | JavaScript | 5.98 KB | 21.55 KB | 126 ms | Brotli (`br`) |
 | **`images/favicon.png`** | Image (PNG) | 178.40 KB | 178.40 KB | 122 ms | None (`identity`) |
 | **`images/geenix-logo.jpg`** | Image (JPEG) | 166.47 KB | 166.47 KB | 129 ms | None (`identity`) |
 | **Font Awesome CSS** | External CSS | 18.31 KB | ~65 KB | 175 ms | Brotli (`br`) |
@@ -55,7 +55,7 @@
 - **Combined image waste**: ~345 KB transferred over wire for two small UI elements.
 
 ### 2. Preloader Curtain Delays LCP (Largest Contentful Paint)
-- The preloader in `script.js` attaches `body.preloader-active` and sets full-screen curtains (`#geenix-preloader`).
+- The preloader in `js/script.js` attaches `body.preloader-active` and sets full-screen curtains (`#geenix-preloader`).
 - Progress simulation uses artificial `setTimeout` intervals (up to 2,500ms safety limit) to tick the counter from 0% to 100%.
 - Even when the DOM and styles are fully parsed, the LCP element (`#hero-heading`) remains occluded behind the preloader curtain until the animation completes.
 
@@ -71,7 +71,7 @@
 - Although loaded with `media="print" onload="this.media='all'"`, it creates an external point of failure and delays icon rendering (causing Flash of Unstyled Content / FOIT on icons).
 
 ### 5. Chatbot Upfront Execution
-- `chatbot.css` (16.2 KB) and `chatbot.js` (21.6 KB) are loaded eagerly on the homepage before any user interaction with the chat launcher.
+- `css/chatbot.css` (16.2 KB) and `js/chatbot.js` (21.6 KB) are loaded eagerly on the homepage before any user interaction with the chat launcher.
 - This consumes main-thread execution time and memory during the initial page bootstrap.
 
 ---
@@ -82,7 +82,7 @@
 
 | # | Vulnerability / Security Finding | Severity | Location |
 |---|---|---|---|
-| 1 | **Exposed AI API Key (Client-Side Obfuscation)** | 🔴 Critical | `chatbot.js` (Base64 split storage calling Gemini API directly) |
+| 1 | **Exposed AI API Key (Client-Side Obfuscation)** | 🔴 Critical | `js/chatbot.js` (Base64 split storage calling Gemini API directly) |
 | 2 | **Content-Security-Policy Incomplete & Meta-Only** | 🟠 High | Missing from `_headers`; `meta` tag cannot enforce `frame-ancestors` |
 | 3 | **Unsafe Inline Directives in CSP** | 🟠 High | `script-src 'unsafe-inline'` and `style-src 'unsafe-inline'` permit XSS |
 | 4 | **Web3Forms Key in Client HTML** | 🟡 Medium | `access_key` in form input (standard for service, but requires domain lock) |

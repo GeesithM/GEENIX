@@ -77,6 +77,49 @@ Our projects are built using modern and reliable technologies.
 
 ---
 
+## 📁 Project Directory Structure
+
+```text
+GEENIX/
+├── css/                     # Stylesheets
+│   ├── style.css            # Global core styles & design tokens
+│   ├── service.css          # Shared service page layouts
+│   └── chatbot.css          # AI chatbot widget styles
+├── js/                      # JavaScript modules
+│   ├── script.js            # Core interactive logic (nav, preloader, back-to-top)
+│   └── chatbot.js           # AI chatbot widget integration
+├── images/                  # Visual assets & brand imagery
+│   ├── favicon.png          # Site favicon
+│   ├── geenix-logo.jpg      # Header and footer brand logo
+│   └── geenix-og.jpg        # Open Graph & Twitter social card
+├── docs/                    # Internal documentation & strategy plans
+│   ├── PERFORMANCE_BASELINE.md # Performance & security audit baseline
+│   ├── SEO_CONTENT_PLAN.md  # 35-article SEO content cluster strategy
+│   └── SEO_KEYWORD_MAP.md   # Keyword target matrix & mappings
+├── [page-routes]/           # Clean URL static landing pages
+│   ├── about/index.html
+│   ├── blog/index.html
+│   ├── contact/index.html
+│   ├── faq/index.html
+│   ├── portfolio/index.html
+│   ├── nextjs-development/index.html
+│   ├── react-development/index.html
+│   ├── seo-services/index.html
+│   ├── ui-ux-design/index.html
+│   ├── web-development/index.html
+│   ├── website-performance/index.html
+│   ├── woocommerce-development/index.html
+│   └── wordpress-development/index.html
+├── .github/workflows/       # CI/CD deployment pipelines
+├── _headers                 # Cloudflare Pages security & caching headers
+├── robots.txt               # Search engine crawl directives
+├── sitemap.xml              # XML Sitemap
+├── index.html               # Main website homepage
+└── 404.html                 # Custom 404 error page
+```
+
+---
+
 ## 🎯 Our Approach
 
 We believe great digital products come from combining **strong engineering, purposeful design, and measurable performance**.
