@@ -92,10 +92,6 @@ GEENIX/
 │   ├── favicon.png          # Site favicon
 │   ├── geenix-logo.jpg      # Header and footer brand logo
 │   └── geenix-og.jpg        # Open Graph & Twitter social card
-├── docs/                    # Internal documentation & strategy plans
-│   ├── PERFORMANCE_BASELINE.md # Performance & security audit baseline
-│   ├── SEO_CONTENT_PLAN.md  # 35-article SEO content cluster strategy
-│   └── SEO_KEYWORD_MAP.md   # Keyword target matrix & mappings
 ├── services/                # Specialized service cluster pages
 │   ├── index.html           # Services Hub / Overview directory
 │   ├── web-development/index.html
