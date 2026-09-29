@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json.schemastore.org/staticwebapp.config.json",
+  "navigationFallback": {
+    "rewrite": "/404.html",
+    "exclude": ["/images/*", "/css/*", "/js/*", "*.{png,jpg,jpeg,gif,svg,webp,css,js,ico,txt,xml}"]
+  },
+  "routes": [
+    {
+      "route": "/web-development",
+      "redirect": "/services/web-development/",
+      "statusCode": 301
+    },
+    {
+      "route": "/web-development/*",
+      "redirect": "/services/web-development/",
+      "statusCode": 301
+    },
+    {
+      "route": "/wordpress-development",
+      "redirect": "/services/wordpress-development/",
+      "statusCode": 301
+    },
+    {
+      "route": "/wordpress-development/*",
+      "redirect": "/services/wordpress-development/",
+      "statusCode": 301
+    },
+    {
+      "route": "/woocommerce-development",
+      "redirect": "/services/woocommerce-development/",
+      "statusCode": 301
+    },
+    {
+      "route": "/woocommerce-development/*",
+      "redirect": "/services/woocommerce-development/",
+      "statusCode": 301
+    },
+    {
+      "route": "/react-development",
+      "redirect": "/services/react-development/",
+      "statusCode": 301
+    },
+    {
+      "route": "/react-development/*",
+      "redirect": "/services/react-development/",
+      "statusCode": 301
+    },
+    {
+      "route": "/nextjs-development",
+      "redirect": "/services/nextjs-development/",
+      "statusCode": 301
+    },
+    {
+      "route": "/nextjs-development/*",
+      "redirect": "/services/nextjs-development/",
+      "statusCode": 301
+    },
+    {
+      "route": "/seo-services",
+      "redirect": "/services/seo-services/",
+      "statusCode": 301
+    },
+    {
+      "route": "/seo-services/*",
+      "redirect": "/services/seo-services/",
+      "statusCode": 301
+    },
+    {
+      "route": "/ui-ux-design",
+      "redirect": "/services/ui-ux-design/",
+      "statusCode": 301
+    },
+    {
+      "route": "/ui-ux-design/*",
+      "redirect": "/services/ui-ux-design/",
+      "statusCode": 301
+    },
+    {
+      "route": "/website-performance",
+      "redirect": "/services/website-performance/",
+      "statusCode": 301
+    },
+    {
+      "route": "/website-performance/*",
+      "redirect": "/services/website-performance/",
+      "statusCode": 301
+    }
+  ],
+  "responseOverrides": {
+    "404": {
+      "rewrite": "/404.html"
+    }
+  }
+}

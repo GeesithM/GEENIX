@@ -601,11 +601,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const stylesheet = document.createElement('link');
       stylesheet.rel = 'stylesheet';
-      stylesheet.href = '/chatbot.css';
+      stylesheet.href = '/css/chatbot.css';
       document.head.appendChild(stylesheet);
 
       const script = document.createElement('script');
-      script.src = '/chatbot.js';
+      script.src = '/js/chatbot.js';
       script.defer = true;
       document.body.appendChild(script);
     };
