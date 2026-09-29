@@ -50,14 +50,14 @@ All page titles and descriptions have been calibrated to maximum SERP pixel widt
 | Page URL | Primary Target Keyword | Optimized Title Tag (SERP Length) |
 |---|---|---|
 | `/` | web development company Sri Lanka | `Web Development Company in Sri Lanka \| Web Design \| GEENIX` |
-| `/web-development/` | web development services Sri Lanka | `Web Development Services Sri Lanka \| Custom Websites \| GEENIX` |
-| `/wordpress-development/` | WordPress development Sri Lanka | `WordPress Web Development Sri Lanka \| Custom Themes \| GEENIX` |
-| `/woocommerce-development/` | WooCommerce development Sri Lanka | `eCommerce & WooCommerce Development Sri Lanka \| GEENIX` |
-| `/react-development/` | React development Sri Lanka | `React JS Web Development Services Sri Lanka \| GEENIX` |
-| `/nextjs-development/` | Next.js development Sri Lanka | `Next.js Web Development Services Sri Lanka \| GEENIX` |
-| `/ui-ux-design/` | web design company Sri Lanka | `UI UX Design & Web Design Company in Sri Lanka \| GEENIX` |
-| `/seo-services/` | SEO services Sri Lanka | `SEO Services Sri Lanka \| Technical SEO Agency \| GEENIX` |
-| `/website-performance/` | website performance optimization | `Website Speed & Core Web Vitals Optimization Sri Lanka \| GEENIX` |
+| `/services/web-development/` | web development services Sri Lanka | `Web Development Services Sri Lanka \| Custom Websites \| GEENIX` |
+| `/services/wordpress-development/` | WordPress development Sri Lanka | `WordPress Web Development Sri Lanka \| Custom Themes \| GEENIX` |
+| `/services/woocommerce-development/` | WooCommerce development Sri Lanka | `eCommerce & WooCommerce Development Sri Lanka \| GEENIX` |
+| `/services/react-development/` | React development Sri Lanka | `React JS Web Development Services Sri Lanka \| GEENIX` |
+| `/services/nextjs-development/` | Next.js development Sri Lanka | `Next.js Web Development Services Sri Lanka \| GEENIX` |
+| `/services/ui-ux-design/` | web design company Sri Lanka | `UI UX Design & Web Design Company in Sri Lanka \| GEENIX` |
+| `/services/seo-services/` | SEO services Sri Lanka | `SEO Services Sri Lanka \| Technical SEO Agency \| GEENIX` |
+| `/services/website-performance/` | website performance optimization | `Website Speed & Core Web Vitals Optimization Sri Lanka \| GEENIX` |
 | `/contact/` | contact web developer Colombo | `Contact GEENIX \| Web Development Company in Sri Lanka` |
 | `/faq/` | website cost Sri Lanka | `Web Development FAQ \| Pricing & Process \| GEENIX Sri Lanka` |
 | `/portfolio/` | web design portfolio Sri Lanka | `Web Design & Development Portfolio \| GEENIX Sri Lanka` |
@@ -79,7 +79,7 @@ Google's **Local 3-Pack** captures over **44% of total clicks** for local servic
    - **Website URL:** `https://www.geenix.live/`
 2. **Profile Completion (100%):**
    - Upload high-resolution logo (`images/geenix-logo.jpg`) and brand graphics.
-   - Add all 8 service offerings with custom descriptions and links to respective service landing pages (`/web-development/`, `/wordpress-development/`, etc.).
+   - Add all 8 service offerings with custom descriptions and links to respective service landing pages (`/services/web-development/`, `/services/wordpress-development/`, etc.).
    - Set business hours matching schema (`Mon-Sat: 09:00 - 18:00`).
 3. **Review Acceleration Strategy:**
    - Secure the first **10–15 verified 5-star Google Reviews** from past clients, partners, or corporate collaborations within 30 days.
@@ -124,7 +124,7 @@ Search engines award Page 1 rankings to domains that demonstrate **Topical Compl
   - Real pricing breakdown (Domain, Hosting, SSL, Design, Maintenance) in LKR
   - Cost comparison: Freelancer vs Local Agency vs Overseas Agency
   - Hidden fees to watch out for (renewal costs, page builder licensing)
-  - CTA linking to `/contact/` and `/web-development/`
+  - CTA linking to `/contact/` and `/services/web-development/`
 
 #### Article 2: "PayHere vs WebXpay: Sri Lankan Payment Gateway Comparison for WooCommerce & React"
 - **Target Keyword:** `payment gateways Sri Lanka`, `PayHere vs WebXpay`, `WooCommerce payment gateway Sri Lanka`
@@ -134,7 +134,7 @@ Search engines award Page 1 rankings to domains that demonstrate **Topical Compl
   - Mobile responsiveness and checkout drop-off rates
   - Integrating PayHere with WooCommerce vs Headless Next.js
   - Alternative gateways: Genie, FriMi, Koko, Mintpay (BNPL)
-  - CTA linking to `/woocommerce-development/`
+  - CTA linking to `/services/woocommerce-development/`
 
 #### Article 3: "WordPress vs Custom React/Next.js: What Sri Lankan Businesses Should Choose"
 - **Target Keyword:** `WordPress vs custom web development`, `React vs WordPress Sri Lanka`
@@ -143,7 +143,7 @@ Search engines award Page 1 rankings to domains that demonstrate **Topical Compl
   - Speed comparison on Sri Lankan mobile networks (Dialog, SLT-Mobitel)
   - Long-term maintenance, hosting costs, and security risks
   - When to choose WordPress (blogs, fast content publishing) vs Next.js (SaaS, platforms, high traffic)
-  - CTA linking to `/wordpress-development/` and `/nextjs-development/`
+  - CTA linking to `/services/wordpress-development/` and `/services/nextjs-development/`
 
 #### Article 4: "How to Choose the Right Web Development Company in Sri Lanka"
 - **Target Keyword:** `choose web development company Sri Lanka`, `best web developers Sri Lanka`

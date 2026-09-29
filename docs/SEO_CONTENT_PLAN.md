@@ -17,7 +17,7 @@
 
 ---
 
-## Cluster 1: Web Development (Pillar: `/web-development/`)
+## Cluster 1: Web Development (Pillar: `/services/web-development/`)
 
 | # | Article Title | Target Keyword | Intent | Priority |
 |---|--------------|---------------|--------|----------|
@@ -29,7 +29,7 @@
 | 6 | What Is a Progressive Web App (PWA) and Does Your Business Need One? | what is a PWA | Informational | P3 |
 | 7 | Essential Features Every Business Website Needs | business website features | Informational | P3 |
 
-## Cluster 2: WordPress (Pillar: `/wordpress-development/`)
+## Cluster 2: WordPress (Pillar: `/services/wordpress-development/`)
 
 | # | Article Title | Target Keyword | Intent | Priority |
 |---|--------------|---------------|--------|----------|
@@ -40,7 +40,7 @@
 | 12 | Top WordPress Mistakes That Kill Website Performance | WordPress performance mistakes | Informational | P3 |
 | 13 | WordPress Maintenance: What You Need to Know | WordPress maintenance guide | Informational | P3 |
 
-## Cluster 3: E-Commerce (Pillar: `/woocommerce-development/`)
+## Cluster 3: E-Commerce (Pillar: `/services/woocommerce-development/`)
 
 | # | Article Title | Target Keyword | Intent | Priority |
 |---|--------------|---------------|--------|----------|
@@ -50,7 +50,7 @@
 | 17 | E-Commerce Website Cost in Sri Lanka: What to Expect | ecommerce website cost Sri Lanka | Informational / Pre-purchase | P2 |
 | 18 | Setting Up Online Payments for Sri Lankan E-Commerce Websites | online payments Sri Lanka | Informational / How-to | P3 |
 
-## Cluster 4: SEO & Performance (Pillar: `/seo-services/`)
+## Cluster 4: SEO & Performance (Pillar: `/services/seo-services/`)
 
 | # | Article Title | Target Keyword | Intent | Priority |
 |---|--------------|---------------|--------|----------|
@@ -62,7 +62,7 @@
 | 24 | How to Fix Common Technical SEO Problems | fix technical SEO problems | Informational / How-to | P2 |
 | 25 | Structured Data for Business Websites: A Practical Guide | structured data business website | Informational | P3 |
 
-## Cluster 5: React & Next.js (Pillar: `/react-development/`)
+## Cluster 5: React & Next.js (Pillar: `/services/react-development/`)
 
 | # | Article Title | Target Keyword | Intent | Priority |
 |---|--------------|---------------|--------|----------|
@@ -72,7 +72,7 @@
 | 29 | React vs WordPress for Business Websites | React vs WordPress | Informational / Comparison | P2 |
 | 30 | Server-Side Rendering vs Static Site Generation: A Practical Guide | SSR vs SSG | Informational | P3 |
 
-## Cluster 6: UI/UX Design (Pillar: `/ui-ux-design/`)
+## Cluster 6: UI/UX Design (Pillar: `/services/ui-ux-design/`)
 
 | # | Article Title | Target Keyword | Intent | Priority |
 |---|--------------|---------------|--------|----------|
@@ -108,7 +108,7 @@ Remaining articles and new topics identified through search console data and cus
 ## Internal Linking Strategy for Blog Posts
 
 Every blog post should include:
-- **1–2 links to its pillar service page** (e.g., WordPress article → `/wordpress-development/`)
+- **1–2 links to its pillar service page** (e.g., WordPress article → `/services/wordpress-development/`)
 - **1 link to a related blog article** within the same cluster
 - **1 link to the contact page** as a contextual CTA
 - Use **descriptive anchor text** (not "click here" or "learn more")

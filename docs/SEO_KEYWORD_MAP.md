@@ -14,29 +14,29 @@ Each row maps a target keyword to its intended page, search intent, priority, an
 |---------|--------------|------------|----------|--------------|-------|
 | web development company Sri Lanka | Commercial | `/` | P1 | Homepage | Primary homepage target. High competition. |
 | web development company Colombo | Commercial/Local | `/` | P1 | Homepage | Geographic variant of primary. |
-| web development Sri Lanka | Commercial | `/web-development/` | P1 | Service Page | Broader service intent. |
-| web development services Sri Lanka | Commercial | `/web-development/` | P1 | Service Page | Service-focused variant. |
-| website development Sri Lanka | Commercial | `/web-development/` | P1 | Service Page | "Website" variant captures different searchers. |
-| custom website development Sri Lanka | Commercial | `/web-development/` | P2 | Service Page | Longer-tail, less competitive. |
-| WordPress development Sri Lanka | Commercial | `/wordpress-development/` | P1 | Service Page | Strong commercial intent. |
-| WordPress website development | Commercial | `/wordpress-development/` | P2 | Service Page | Non-local variant for broader reach. |
-| WordPress web developer Sri Lanka | Commercial | `/wordpress-development/` | P2 | Service Page | Role-based search. |
-| WooCommerce development Sri Lanka | Commercial | `/woocommerce-development/` | P2 | Service Page | E-commerce specific. |
-| ecommerce website development Sri Lanka | Commercial | `/woocommerce-development/` | P2 | Service Page | Broader e-commerce intent. |
-| React development Sri Lanka | Commercial | `/react-development/` | P2 | Service Page | Framework-specific. |
-| React web development | Commercial | `/react-development/` | P2 | Service Page | Non-local variant. |
-| Next.js development Sri Lanka | Commercial | `/nextjs-development/` | P2 | Service Page | Framework-specific. |
-| Next.js web development | Commercial | `/nextjs-development/` | P3 | Service Page | Niche but valuable. |
-| UI UX design Sri Lanka | Commercial | `/ui-ux-design/` | P2 | Service Page | Design service intent. |
-| UI UX design services | Commercial | `/ui-ux-design/` | P2 | Service Page | Service variant. |
-| web design company Sri Lanka | Commercial | `/ui-ux-design/` | P2 | Service Page | "Design" variant. |
-| web design company Colombo | Commercial/Local | `/ui-ux-design/` | P2 | Service Page | Local design variant. |
-| SEO services Sri Lanka | Commercial | `/seo-services/` | P1 | Service Page | High-value commercial keyword. |
-| technical SEO Sri Lanka | Commercial | `/seo-services/` | P2 | Service Page | More specific SEO intent. |
-| website performance optimization | Commercial | `/website-performance/` | P3 | Service Page | Performance-focused. |
-| Core Web Vitals optimization | Commercial | `/website-performance/` | P3 | Service Page | Specific technical need. |
-| landing page development Sri Lanka | Commercial | `/web-development/` | P3 | Service Page | Covered within web dev. |
-| website maintenance Sri Lanka | Commercial | `/web-development/` | P3 | Service Page | Support/maintenance angle. |
+| web development Sri Lanka | Commercial | `/services/web-development/` | P1 | Service Page | Broader service intent. |
+| web development services Sri Lanka | Commercial | `/services/web-development/` | P1 | Service Page | Service-focused variant. |
+| website development Sri Lanka | Commercial | `/services/web-development/` | P1 | Service Page | "Website" variant captures different searchers. |
+| custom website development Sri Lanka | Commercial | `/services/web-development/` | P2 | Service Page | Longer-tail, less competitive. |
+| WordPress development Sri Lanka | Commercial | `/services/wordpress-development/` | P1 | Service Page | Strong commercial intent. |
+| WordPress website development | Commercial | `/services/wordpress-development/` | P2 | Service Page | Non-local variant for broader reach. |
+| WordPress web developer Sri Lanka | Commercial | `/services/wordpress-development/` | P2 | Service Page | Role-based search. |
+| WooCommerce development Sri Lanka | Commercial | `/services/woocommerce-development/` | P2 | Service Page | E-commerce specific. |
+| ecommerce website development Sri Lanka | Commercial | `/services/woocommerce-development/` | P2 | Service Page | Broader e-commerce intent. |
+| React development Sri Lanka | Commercial | `/services/react-development/` | P2 | Service Page | Framework-specific. |
+| React web development | Commercial | `/services/react-development/` | P2 | Service Page | Non-local variant. |
+| Next.js development Sri Lanka | Commercial | `/services/nextjs-development/` | P2 | Service Page | Framework-specific. |
+| Next.js web development | Commercial | `/services/nextjs-development/` | P3 | Service Page | Niche but valuable. |
+| UI UX design Sri Lanka | Commercial | `/services/ui-ux-design/` | P2 | Service Page | Design service intent. |
+| UI UX design services | Commercial | `/services/ui-ux-design/` | P2 | Service Page | Service variant. |
+| web design company Sri Lanka | Commercial | `/services/ui-ux-design/` | P2 | Service Page | "Design" variant. |
+| web design company Colombo | Commercial/Local | `/services/ui-ux-design/` | P2 | Service Page | Local design variant. |
+| SEO services Sri Lanka | Commercial | `/services/seo-services/` | P1 | Service Page | High-value commercial keyword. |
+| technical SEO Sri Lanka | Commercial | `/services/seo-services/` | P2 | Service Page | More specific SEO intent. |
+| website performance optimization | Commercial | `/services/website-performance/` | P3 | Service Page | Performance-focused. |
+| Core Web Vitals optimization | Commercial | `/services/website-performance/` | P3 | Service Page | Specific technical need. |
+| landing page development Sri Lanka | Commercial | `/services/web-development/` | P3 | Service Page | Covered within web dev. |
+| website maintenance Sri Lanka | Commercial | `/services/web-development/` | P3 | Service Page | Support/maintenance angle. |
 
 ## Informational Keywords (Blog Targets)
 
@@ -66,7 +66,7 @@ Each row maps a target keyword to its intended page, search intent, priority, an
 | Keyword | Search Intent | Target URL | Priority | Notes |
 |---------|--------------|------------|----------|-------|
 | web developer Colombo | Local | `/` | P2 | Local service search. |
-| website design Colombo | Local | `/ui-ux-design/` | P2 | Local design search. |
+| website design Colombo | Local | `/services/ui-ux-design/` | P2 | Local design search. |
 | freelance web developer Sri Lanka | Local | `/` | P3 | Freelancer-specific search. |
 
 ---

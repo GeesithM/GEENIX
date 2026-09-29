@@ -96,21 +96,23 @@ GEENIX/
 │   ├── PERFORMANCE_BASELINE.md # Performance & security audit baseline
 │   ├── SEO_CONTENT_PLAN.md  # 35-article SEO content cluster strategy
 │   └── SEO_KEYWORD_MAP.md   # Keyword target matrix & mappings
-├── [page-routes]/           # Clean URL static landing pages
-│   ├── about/index.html
-│   ├── blog/index.html
-│   ├── contact/index.html
-│   ├── faq/index.html
-│   ├── portfolio/index.html
+├── services/                # Specialized service cluster pages
+│   ├── index.html           # Services Hub / Overview directory
+│   ├── web-development/index.html
 │   ├── nextjs-development/index.html
 │   ├── react-development/index.html
-│   ├── seo-services/index.html
-│   ├── ui-ux-design/index.html
-│   ├── web-development/index.html
-│   ├── website-performance/index.html
+│   ├── wordpress-development/index.html
 │   ├── woocommerce-development/index.html
-│   └── wordpress-development/index.html
+│   ├── ui-ux-design/index.html
+│   ├── seo-services/index.html
+│   └── website-performance/index.html
+├── about/index.html         # About page
+├── blog/index.html          # Blog / Insights page
+├── contact/index.html       # Contact & consultation page
+├── faq/index.html           # FAQ page
+├── portfolio/index.html     # Portfolio & case studies
 ├── .github/workflows/       # CI/CD deployment pipelines
+├── staticwebapp.config.json # Azure Static Web Apps routing & 301 redirects
 ├── _headers                 # Cloudflare Pages security & caching headers
 ├── robots.txt               # Search engine crawl directives
 ├── sitemap.xml              # XML Sitemap
