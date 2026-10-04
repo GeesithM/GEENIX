@@ -77,8 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     let currentProgress = 0;
-    let targetProgress  = 15;
-    let isFullyLoaded   = false;
+    let targetProgress  = 100;
 
     // Check for prefers-reduced-motion
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -98,7 +97,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Smooth animation frame ticker for progress counter
     const tickProgress = () => {
       if (currentProgress < targetProgress) {
-        const step = Math.max(1, Math.ceil((targetProgress - currentProgress) * 0.12));
+        const step = targetProgress === 100
+          ? targetProgress - currentProgress
+          : Math.max(1, Math.ceil((targetProgress - currentProgress) * 0.12));
         updateProgress(currentProgress + step);
       }
 
@@ -124,35 +125,8 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
           preloader.classList.add('preloader-done');
         }, 850);
-      }, prefersReducedMotion ? 50 : 350);
+      }, prefersReducedMotion ? 0 : 100);
     };
-
-    // Trigger target progress increments based on load state
-    if (prefersReducedMotion) {
-      targetProgress = 100;
-    } else {
-      targetProgress = 40;
-      setTimeout(() => { if (!isFullyLoaded) targetProgress = Math.max(targetProgress, 70); }, 500);
-      setTimeout(() => { if (!isFullyLoaded) targetProgress = Math.max(targetProgress, 90); }, 1200);
-    }
-
-    const handleWindowLoad = () => {
-      isFullyLoaded = true;
-      targetProgress = 100;
-    };
-
-    if (document.readyState === 'complete') {
-      handleWindowLoad();
-    } else {
-      window.addEventListener('load', handleWindowLoad);
-    }
-
-    // Safety fallback: dismiss preloader after 2.5s maximum to never lock up UX
-    setTimeout(() => {
-      if (!isFullyLoaded) {
-        targetProgress = 100;
-      }
-    }, 2500);
 
     requestAnimationFrame(tickProgress);
   }
@@ -613,6 +587,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (acceptBtn)  acceptBtn.addEventListener('click',  () => dismissBanner('accepted'));
       if (declineBtn) declineBtn.addEventListener('click', () => dismissBanner('declined'));
+    }
+  }
+
+  /* ══════════════════════════════════════════════════════════════
+     DEFERRED CHATBOT
+     The chatbot is not part of the critical rendering path. Load its
+     CSS and JavaScript once the page is idle so first paint stays fast.
+     ══════════════════════════════════════════════════════════════ */
+  {
+    const loadChatbot = () => {
+      if (document.querySelector('script[src$="chatbot.js"]')) return;
+
+      const stylesheet = document.createElement('link');
+      stylesheet.rel = 'stylesheet';
+      stylesheet.href = '/css/chatbot.css';
+      document.head.appendChild(stylesheet);
+
+      const script = document.createElement('script');
+      script.src = '/js/chatbot.js';
+      script.defer = true;
+      document.body.appendChild(script);
+    };
+
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(loadChatbot, { timeout: 2500 });
+    } else {
+      setTimeout(loadChatbot, 1500);
     }
   }
 
