@@ -58,10 +58,12 @@
   max-width: 680px;
   margin-bottom: 2rem;
 }
+.cta-row,
 .svc-hero .cta-row {
   display: flex;
   gap: 0.85rem;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 /* ── Content Sections ──────────────────────────────────────────── */
@@ -200,6 +202,13 @@
   margin: 0 auto 2rem;
   line-height: 1.75;
 }
+.svc-cta-banner .cta-row {
+  display: flex;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
 
 /* ── Service FAQ ───────────────────────────────────────────────── */
 .svc-faq { max-width: 760px }
@@ -239,12 +248,25 @@
 .related-link:hover .arrow { color: var(--ice) }
 
 /* ── Responsive ────────────────────────────────────────────────── */
-@media (max-width: 600px) {
-  .svc-hero .cta-row {
+@media (max-width: 640px) {
+  .cta-row,
+  .svc-hero .cta-row,
+  .svc-cta-banner .cta-row {
     flex-direction: column;
     align-items: stretch;
+    width: 100%;
+    max-width: 360px;
+    margin-inline: auto;
   }
-  .svc-hero .cta-row .btn { justify-content: center; width: 100% }
+  .cta-row .btn,
+  .svc-hero .cta-row .btn,
+  .svc-cta-banner .cta-row .btn {
+    display: inline-flex;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+  }
   .feature-grid { grid-template-columns: 1fr }
   .process-steps { grid-template-columns: 1fr }
   .related-services { grid-template-columns: 1fr }

@@ -675,10 +675,14 @@
     line-height: 1.85;
     margin-bottom: 2rem;
   }
-  .hero-btns {
+  .hero-btns,
+  .cta-row {
     display: flex;
     gap: 0.85rem;
     flex-wrap: wrap;
+    align-items: center;
+  }
+  .hero-btns {
     margin-bottom: 2.5rem;
   }
   .hero-stats {
@@ -765,8 +769,22 @@
   @media (max-width: 640px) {
     .hero { padding: 90px 0 100px }
     .hero h1 { font-size: clamp(1.9rem, 8vw, 2.8rem) }
-    .hero-btns { flex-direction: column; align-items: stretch }
-    .hero-btns .btn { justify-content: center; width: 100% }
+    .hero-btns,
+    .cta-row {
+      flex-direction: column;
+      align-items: stretch;
+      width: 100%;
+      max-width: 360px;
+      margin-inline: auto;
+    }
+    .hero-btns .btn,
+    .cta-row .btn {
+      display: inline-flex;
+      justify-content: center;
+      width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+    }
     .hero-stats { gap: 1rem }
     .hs-n { font-size: 1.4rem }
     .hero-p { font-size: 1rem; line-height: 1.75 }
@@ -950,6 +968,16 @@
   .svc-card:hover .svc-arr {
     color: var(--ice);
     transform: translate(2px, -2px);
+  }
+
+  .svc-all-wrap {
+    text-align: center;
+    margin-top: 2.5rem;
+  }
+  .svc-all-btn {
+    display: inline-flex;
+    padding: 0.75rem 1.8rem;
+    border-color: var(--bdr2);
   }
 }
 
@@ -1168,11 +1196,29 @@
 
   @media (max-width: 900px) {
     .about-grid { grid-template-columns: 1fr; gap: 2.5rem }
+    .about-txt { order: 1 }
+    .about-vis { order: 2; margin: 1.5rem 0 }
     .avis-wrap { width: 240px; height: 240px }
     .aring-1 { width: 140px; height: 140px }
     .aring-2 { width: 190px; height: 190px }
   }
   @media (max-width: 640px) {
+    .svc-all-wrap {
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    .svc-all-btn {
+      display: flex;
+      width: 100%;
+      max-width: 100%;
+      justify-content: center;
+      padding: 0.85rem 1rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      white-space: normal;
+      text-align: center;
+      box-sizing: border-box;
+    }
     .ap-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem }
     .ap-item { padding: 1rem 0.85rem }
     .ap-icon-box { width: 34px; height: 34px; font-size: 0.85rem }
@@ -1186,9 +1232,9 @@
     .aring-1 { width: 120px; height: 120px }
     .aring-2 { width: 160px; height: 160px }
     .achip { font-size: 0.65rem; padding: 0.35rem 0.65rem }
-    .achip-1 { inset-inline-end: -5px }
-    .achip-2 { inset-inline-end: -10px }
-    .achip-3 { inset-inline-start: -10px }
+    .achip-1 { inset-inline-end: 0 }
+    .achip-2 { inset-inline-end: 0 }
+    .achip-3 { inset-inline-start: 0 }
   }
   @media (max-width: 380px) {
     .ap-grid { grid-template-columns: 1fr; gap: 0.75rem }
