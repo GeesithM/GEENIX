@@ -2,7 +2,15 @@
   "$schema": "https://json.schemastore.org/staticwebapp.config.json",
   "navigationFallback": {
     "rewrite": "/404.html",
-    "exclude": ["/images/*", "/css/*", "/js/*", "*.{png,jpg,jpeg,gif,svg,webp,css,js,ico,txt,xml}"]
+    "exclude": ["/images/*", "/css/*", "/js/*", "*.{png,jpg,jpeg,gif,svg,webp,css,js,ico,txt,xml,webmanifest}"]
+  },
+  "mimeTypes": {
+    ".webmanifest": "application/manifest+json"
+  },
+  "globalHeaders": {
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "DENY",
+    "Referrer-Policy": "strict-origin-when-cross-origin"
   },
   "routes": [
     {
@@ -84,6 +92,24 @@
       "route": "/website-performance/*",
       "redirect": "/services/website-performance/",
       "statusCode": 301
+    },
+    {
+      "route": "/images/*",
+      "headers": {
+        "cache-control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "route": "/css/*",
+      "headers": {
+        "cache-control": "public, max-age=604800, stale-while-revalidate=86400"
+      }
+    },
+    {
+      "route": "/js/*",
+      "headers": {
+        "cache-control": "public, max-age=604800, stale-while-revalidate=86400"
+      }
     }
   ],
   "responseOverrides": {
