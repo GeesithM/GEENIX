@@ -1,4 +1,17 @@
+# https://www.geenix.live/robots.txt
 User-agent: *
 Allow: /
-Disallow: /docs/
+Disallow: /404.html
+
+# Crawl-delay for polite bots
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+# Sitemaps
 Sitemap: https://www.geenix.live/sitemap.xml
+
+# Canonical host
+Host: https://www.geenix.live
