@@ -7,7 +7,7 @@
   <!-- ── Security Headers ──────────────────────────────── -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:; connect-src 'self' https://api.web3forms.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://api.web3forms.com;">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:; connect-src 'self' https://api.web3forms.com https://generativelanguage.googleapis.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://api.web3forms.com;">
 
   <!-- ── Primary Meta ──────────────────────────────────── -->
   <title>Web Development &amp; Digital Services in Sri Lanka | GEENIX</title>
@@ -419,25 +419,45 @@
 
     <!-- FAQ SECTION ──────────────────────────────────────── -->
     <section class="svc-section" aria-labelledby="faq-heading">
-      <div class="container svc-faq">
+      <div class="container">
         <h2 id="faq-heading">Frequently Asked Questions</h2>
-        <div class="faq-list" style="margin-top:1.5rem;">
-          <div class="feature-card" style="margin-bottom:1rem;">
-            <h3>How much does a web development project cost in Sri Lanka?</h3>
-            <p>Project costs depend on scope, features, and technology. Simple corporate websites start from an accessible budget, while full-stack React/Next.js web apps and e-commerce platforms are quoted transparently based on milestone deliverables. Contact us for a free, itemized estimate.</p>
-          </div>
-          <div class="feature-card" style="margin-bottom:1rem;">
-            <h3>How long does it take to design and launch a website?</h3>
-            <p>A standard business website typically takes 2 to 3 weeks. Custom web applications, e-commerce stores, and complex Next.js platforms usually take 4 to 8 weeks including design, QA testing, and search engine setup.</p>
-          </div>
-          <div class="feature-card" style="margin-bottom:1rem;">
-            <h3>Can you help improve our existing website's speed and SEO?</h3>
-            <p>Yes. We offer comprehensive website performance remediation and SEO audits to diagnose why your site is slow or failing to rank on Google. We fix Core Web Vitals, implement Schema markup, and optimize code structure.</p>
-          </div>
-          <div class="feature-card" style="margin-bottom:1rem;">
-            <h3>Do you provide maintenance and hosting support after launch?</h3>
-            <p>Absolutely. We provide ongoing maintenance packages covering security updates, content revisions, speed monitoring, automated backups, and technical support to ensure your site runs flawlessly 24/7.</p>
-          </div>
+        <div class="svc-faq">
+          <details class="faq-item" open>
+            <summary class="faq-summary">
+              <span class="faq-question">How much does a web development project cost in Sri Lanka?</span>
+              <span class="faq-icon" aria-hidden="true"><i class="fas fa-chevron-down"></i></span>
+            </summary>
+            <div class="faq-content">
+              <p>Project costs depend on scope, features, and technology. Simple corporate websites start from an accessible budget, while full-stack React/Next.js web apps and e-commerce platforms are quoted transparently based on milestone deliverables. Contact us for a free, itemized estimate.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-summary">
+              <span class="faq-question">How long does it take to design and launch a website?</span>
+              <span class="faq-icon" aria-hidden="true"><i class="fas fa-chevron-down"></i></span>
+            </summary>
+            <div class="faq-content">
+              <p>A standard business website typically takes 2 to 3 weeks. Custom web applications, e-commerce stores, and complex Next.js platforms usually take 4 to 8 weeks including design, QA testing, and search engine setup.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-summary">
+              <span class="faq-question">Can you help improve our existing website's speed and SEO?</span>
+              <span class="faq-icon" aria-hidden="true"><i class="fas fa-chevron-down"></i></span>
+            </summary>
+            <div class="faq-content">
+              <p>Yes. We offer comprehensive website performance remediation and SEO audits to diagnose why your site is slow or failing to rank on Google. We fix Core Web Vitals, implement Schema markup, and optimize code structure.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-summary">
+              <span class="faq-question">Do you provide maintenance and hosting support after launch?</span>
+              <span class="faq-icon" aria-hidden="true"><i class="fas fa-chevron-down"></i></span>
+            </summary>
+            <div class="faq-content">
+              <p>Absolutely. We provide ongoing maintenance packages covering security updates, content revisions, speed monitoring, automated backups, and technical support to ensure your site runs flawlessly 24/7.</p>
+            </div>
+          </details>
         </div>
       </div>
     </section>
@@ -522,6 +542,5 @@
   </button>
 
   <script src="/js/script.js" defer></script>
-  <script>document.getElementById('fyear').textContent=new Date().getFullYear();</script>
 </body>
 </html>

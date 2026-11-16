@@ -1,17 +1,20 @@
 /**
- * GEENIX — script.js  v3.1
+ * GEENIX — script.js  v4.0
  * ─────────────────────────────────────────────────────────────────
  * Handles:
- *  • Header scroll effect & glassmorphism
+ *  • Preloader reveal & progress ticker
+ *  • Top scroll progress indicator bar
+ *  • Header floating glassmorphism & scroll-spy
  *  • Mobile nav (open / close / focus trap / ESC / body scroll lock)
  *  • Smooth scroll with header offset
- *  • Scroll-spy for active nav link
- *  • IntersectionObserver scroll reveals
- *  • Contact form: client-side validation + async submit + rate limiting
- *  • Input sanitization for XSS prevention
+ *  • Interactive cursor spotlight & 3D hero terminal tilt
+ *  • Animated hero stat counters
+ *  • IntersectionObserver scroll reveals (homepage & inner pages)
+ *  • Exclusive FAQ accordion expansion
+ *  • Unified contact forms (#cform & #contact-form): validation + async Web3Forms submit
  *  • Cookie consent banner (localStorage persistence)
- *  • Back-to-top button
- *  • Dynamic footer year
+ *  • Back-to-top button & dynamic footer year
+ *  • Deferred AI chatbot loading
  * ─────────────────────────────────────────────────────────────────
  */
 
@@ -21,11 +24,6 @@
    UTILITIES
    ══════════════════════════════════════════════════════════════════ */
 
-/**
- * Throttle using requestAnimationFrame — zero jank, zero overhead.
- * @param {Function} fn
- * @returns {Function}
- */
 const rafThrottle = (fn) => {
   let ticking = false;
   return (...args) => {
@@ -36,38 +34,30 @@ const rafThrottle = (fn) => {
   };
 };
 
-/**
- * Safe querySelector — returns null instead of throwing.
- * @param {string} sel
- * @param {Document|Element} [ctx=document]
- * @returns {Element|null}
- */
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
-
-/**
- * Safe querySelectorAll — returns an array.
- * @param {string} sel
- * @param {Document|Element} [ctx=document]
- * @returns {Element[]}
- */
 const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
 
 /* ══════════════════════════════════════════════════════════════════
    DOM READY
    ══════════════════════════════════════════════════════════════════ */
 document.addEventListener('DOMContentLoaded', () => {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const hasHoverPointer = window.matchMedia('(hover: hover)').matches;
 
   /* ══════════════════════════════════════════════════════════════
      PRELOADER CONTROLLER
      ══════════════════════════════════════════════════════════════ */
   const preloader = $('#geenix-preloader');
+  let onPreloaderDone = null;
+  const HDR_OFFSET = 80;
+  const initialHashTarget = window.location.hash ? $(window.location.hash) : null;
+
   if (preloader) {
     document.body.classList.add('preloader-active');
 
     const progressBar = $('#preloader-bar');
     const counterEl   = $('#preloader-counter');
     const statusEl    = $('#preloader-status');
-    const taglineEl   = $('#preloader-tagline');
 
     const statuses = [
       { progress: 20, label: 'INITIALIZING ENGINE...' },
@@ -77,58 +67,66 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     let currentProgress = 0;
-    let targetProgress  = 100;
-
-    // Check for prefers-reduced-motion
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const targetProgress = 100;
 
     const updateProgress = (val) => {
       currentProgress = Math.min(100, Math.max(currentProgress, Math.round(val)));
       if (progressBar) progressBar.style.width = `${currentProgress}%`;
       if (counterEl) counterEl.textContent = `${currentProgress}%`;
 
-      // Update status label based on progress
       const matchStatus = [...statuses].reverse().find(s => currentProgress >= s.progress);
       if (matchStatus && statusEl && statusEl.textContent !== matchStatus.label) {
         statusEl.textContent = matchStatus.label;
       }
     };
 
-    // Smooth animation frame ticker for progress counter
-    const tickProgress = () => {
-      if (currentProgress < targetProgress) {
-        const step = targetProgress === 100
-          ? targetProgress - currentProgress
-          : Math.max(1, Math.ceil((targetProgress - currentProgress) * 0.12));
-        updateProgress(currentProgress + step);
-      }
-
-      if (currentProgress < 100) {
-        requestAnimationFrame(tickProgress);
-      } else {
-        finishPreloader();
-      }
-    };
-
     let finished = false;
+    let tickTimer = null;
     const finishPreloader = () => {
       if (finished) return;
       finished = true;
+      if (tickTimer) {
+        clearInterval(tickTimer);
+        tickTimer = null;
+      }
       if (statusEl) statusEl.textContent = 'SYSTEM READY';
       updateProgress(100);
 
-      setTimeout(() => {
+      const applyHide = () => {
         preloader.classList.add('preloader-hide');
         document.body.classList.remove('preloader-active');
         document.body.classList.add('loaded');
+        onPreloaderDone?.();
 
-        setTimeout(() => {
+        if (initialHashTarget) {
           preloader.classList.add('preloader-done');
-        }, 850);
-      }, prefersReducedMotion ? 0 : 100);
+          const top = initialHashTarget.getBoundingClientRect().top + window.scrollY - HDR_OFFSET;
+          window.scrollTo({ top, behavior: 'instant' });
+        } else {
+          setTimeout(() => {
+            preloader.classList.add('preloader-done');
+          }, 850);
+        }
+      };
+
+      if (prefersReducedMotion || initialHashTarget) {
+        applyHide();
+      } else {
+        setTimeout(applyHide, 80);
+      }
     };
 
-    requestAnimationFrame(tickProgress);
+    if (prefersReducedMotion || initialHashTarget) {
+      finishPreloader();
+    } else {
+      tickTimer = setInterval(() => {
+        const step = Math.max(8, Math.ceil((targetProgress - currentProgress) * 0.35));
+        updateProgress(currentProgress + step);
+        if (currentProgress >= targetProgress) {
+          finishPreloader();
+        }
+      }, 24);
+    }
   }
 
   /* ── DOM Refs ─────────────────────────────────────────────────── */
@@ -136,10 +134,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const navToggle = $('#nav-toggle');
   const navList   = $('#nav-list');
   const btt       = $('#btt');
-  const cform     = $('#cform');
-  const fsucc     = $('#fsucc');
-  const ferr      = $('#ferr');
-  const subBtn    = $('#sub-btn');
   const fyear     = $('#fyear');
   const navLinks  = $$('.nl[href^="#"]');
   const sections  = $$('section[id]');
@@ -147,60 +141,65 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ── Footer year ─────────────────────────────────────────────── */
   if (fyear) fyear.textContent = new Date().getFullYear();
 
+  /* ── Top Scroll Progress Bar ─────────────────────────────────── */
+  let scrollProgress = $('#scroll-progress');
+  if (!scrollProgress) {
+    scrollProgress = document.createElement('div');
+    scrollProgress.id = 'scroll-progress';
+    scrollProgress.setAttribute('aria-hidden', 'true');
+    document.body.prepend(scrollProgress);
+  }
+
   /* ══════════════════════════════════════════════════════════════
-     HEADER SCROLL & SCROLL-SPY
+     HEADER SCROLL, PROGRESS BAR & SCROLL-SPY
      ══════════════════════════════════════════════════════════════ */
-  const HDR_HEIGHT    = 68;  // matches CSS .nav-wrap height
-  const HDR_OFFSET    = 76;  // scroll offset ensuring section headers are never obscured
-  const SCROLL_GLASS  = 40;  // px before header gets glass bg
-  const SCROLL_BTT    = 320; // px before back-to-top appears
+  const HDR_HEIGHT   = 68;
+  const SCROLL_GLASS = 40;
+  const SCROLL_BTT   = 320;
 
   const handleScroll = rafThrottle(() => {
     const y = window.scrollY;
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = maxScroll > 0 ? Math.min(1, Math.max(0, y / maxScroll)) : 0;
 
-    /* Header glassmorphism */
+    scrollProgress.style.transform = `scaleX(${progress})`;
     hdr?.classList.toggle('scrolled', y > SCROLL_GLASS);
-
-    /* Back-to-top visibility */
     btt?.classList.toggle('show', y > SCROLL_BTT);
 
-    /* Scroll-spy — find the section closest to top */
-    let currentId = '';
-    sections.forEach(section => {
-      if (y >= section.offsetTop - HDR_HEIGHT - 20) {
-        currentId = section.id;
-      }
-    });
+    if (navLinks.length && sections.length) {
+      let currentId = '';
+      sections.forEach(section => {
+        if (y >= section.offsetTop - HDR_HEIGHT - 24) {
+          currentId = section.id;
+        }
+      });
 
-    navLinks.forEach(link => {
-      const isActive = link.getAttribute('href') === `#${currentId}`;
-      link.classList.toggle('active', isActive);
-      /* Keep aria-current in sync for accessibility */
-      if (isActive) {
-        link.setAttribute('aria-current', 'page');
-      } else {
-        link.removeAttribute('aria-current');
-      }
-    });
+      navLinks.forEach(link => {
+        const isActive = link.getAttribute('href') === `#${currentId}`;
+        link.classList.toggle('active', isActive);
+        if (isActive) {
+          link.setAttribute('aria-current', 'page');
+        } else {
+          link.removeAttribute('aria-current');
+        }
+      });
+    }
   });
 
   window.addEventListener('scroll', handleScroll, { passive: true });
-  /* Run once on load to set initial state */
+  window.addEventListener('resize', handleScroll, { passive: true });
   handleScroll();
 
   /* ══════════════════════════════════════════════════════════════
      MOBILE NAVIGATION
      ══════════════════════════════════════════════════════════════ */
   if (navToggle && navList) {
-    /** Get all focusable elements inside the nav */
     const getFocusableNavItems = () =>
       $$('a, button', navList).filter(el => !el.hasAttribute('disabled') && !el.closest('[hidden]'));
 
-    /** Track scroll position for body lock */
     let savedScrollY = 0;
 
     const openNav = () => {
-      /* Save scroll position and lock body */
       savedScrollY = window.scrollY;
       document.body.classList.add('nav-open');
       document.body.style.top = `-${savedScrollY}px`;
@@ -208,7 +207,6 @@ document.addEventListener('DOMContentLoaded', () => {
       navList.classList.add('open');
       navToggle.setAttribute('aria-expanded', 'true');
       navToggle.setAttribute('aria-label', 'Close navigation menu');
-      /* Focus first item for keyboard users */
       const items = getFocusableNavItems();
       if (items.length) items[0].focus();
       document.addEventListener('click', handleOutsideClick, true);
@@ -220,7 +218,6 @@ document.addEventListener('DOMContentLoaded', () => {
       navToggle.setAttribute('aria-expanded', 'false');
       navToggle.setAttribute('aria-label', 'Open navigation menu');
 
-      /* Unlock body and restore scroll position */
       document.body.classList.remove('nav-open');
       document.body.style.top = '';
       window.scrollTo(0, savedScrollY);
@@ -235,7 +232,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     };
 
-    /** Keyboard navigation: ESC closes, Tab traps focus */
     const handleNavKeyDown = (e) => {
       if (e.key === 'Escape') {
         closeNav();
@@ -261,13 +257,11 @@ document.addEventListener('DOMContentLoaded', () => {
       navList.classList.contains('open') ? closeNav() : openNav();
     });
 
-    /* Close mobile nav on resize to desktop */
     const mediaQuery = window.matchMedia('(min-width: 861px)');
     mediaQuery.addEventListener('change', (e) => {
       if (e.matches && navList.classList.contains('open')) closeNav();
     });
 
-    /* Expose closeNav for smooth-scroll handler below */
     window.__geenixCloseNav = closeNav;
   }
 
@@ -289,12 +283,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       window.scrollTo({ top, behavior: 'smooth' });
 
-      /* Update URL without triggering native scroll */
       if (history.pushState && href !== '#') {
         history.pushState(null, '', href);
       }
 
-      /* Move focus to target for keyboard/screen-reader users */
       target.setAttribute('tabindex', '-1');
       target.focus({ preventScroll: true });
       target.addEventListener('blur', () => target.removeAttribute('tabindex'), { once: true });
@@ -307,7 +299,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (btt) {
     btt.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      /* Return focus to top of page */
       const main = $('#main') || $('h1');
       if (main) {
         main.setAttribute('tabindex', '-1');
@@ -318,31 +309,138 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ══════════════════════════════════════════════════════════════
-     SCROLL REVEAL — IntersectionObserver
+     INTERACTIVE CURSOR SPOTLIGHT & 3D HERO TERMINAL TILT
      ══════════════════════════════════════════════════════════════ */
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!prefersReducedMotion && hasHoverPointer) {
+    const spotlightTargets = $$(
+      '.svc-card, .port-card, .feature-card, .ap-item, .process-step, .related-link, .cinfo-list li'
+    );
+    spotlightTargets.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+        card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+      }, { passive: true });
+    });
 
-  if (!prefersReducedMotion) {
+    const heroTerm = $('.hero-terminal');
+    if (heroTerm) {
+      heroTerm.addEventListener('mousemove', (e) => {
+        const rect = heroTerm.getBoundingClientRect();
+        const nx = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+        const ny = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+        heroTerm.style.setProperty('--rx', `${(-ny * 4.5).toFixed(2)}deg`);
+        heroTerm.style.setProperty('--ry', `${(nx * 4.5).toFixed(2)}deg`);
+      }, { passive: true });
+
+      heroTerm.addEventListener('mouseleave', () => {
+        heroTerm.style.setProperty('--rx', '0deg');
+        heroTerm.style.setProperty('--ry', '0deg');
+      }, { passive: true });
+    }
+  }
+
+  /* ══════════════════════════════════════════════════════════════
+     HERO STAT COUNTERS
+     ══════════════════════════════════════════════════════════════ */
+  const statsWrap = $('.hero-stats');
+  if (statsWrap && !prefersReducedMotion) {
+    let statsAnimated = false;
+    const animateStats = () => {
+      if (statsAnimated) return;
+      statsAnimated = true;
+
+      $$('.hs-n', statsWrap).forEach(statEl => {
+        const textNode = statEl.firstChild;
+        if (!textNode || textNode.nodeType !== Node.TEXT_NODE) return;
+        const target = parseInt(textNode.nodeValue.trim(), 10);
+        if (Number.isNaN(target) || target <= 0) return;
+
+        const duration = 1000;
+        let start = null;
+        const step = (now) => {
+          if (start === null) start = now;
+          const t = Math.min(1, Math.max(0, (now - start) / duration));
+          const eased = 1 - Math.pow(1 - t, 3);
+          textNode.nodeValue = String(Math.round(target * eased));
+          if (t < 1) {
+            requestAnimationFrame(step);
+          } else {
+            textNode.nodeValue = String(target);
+          }
+        };
+        requestAnimationFrame(step);
+      });
+    };
+
+    const startStatsObserver = () => {
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateStats();
+            obs.disconnect();
+          }
+        });
+      }, { threshold: 0.25 });
+      obs.observe(statsWrap);
+    };
+
+    if (preloader) {
+      onPreloaderDone = startStatsObserver;
+    } else {
+      startStatsObserver();
+    }
+  }
+
+  /* ══════════════════════════════════════════════════════════════
+     SCROLL REVEAL — Homepage & Inner Pages
+     ══════════════════════════════════════════════════════════════ */
+  const autoRevealTargets = $$(
+    '.feature-card, .process-step, .related-link, .svc-cta-banner'
+  ).filter(el => !el.classList.contains('js-reveal'));
+  autoRevealTargets.forEach(el => el.classList.add('js-reveal'));
+
+  const revealEls = $$('.js-reveal');
+  if (!prefersReducedMotion && revealEls.length) {
+    const revealVisibleInViewport = () => {
+      const vh = window.innerHeight || 900;
+      revealEls.forEach(el => {
+        if (el.classList.contains('revealed')) return;
+        const rect = el.getBoundingClientRect();
+        if (rect.top < vh * 1.05 && rect.bottom > 0) {
+          el.classList.add('revealed');
+        }
+      });
+    };
+
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('revealed');
-          revealObserver.unobserve(entry.target); /* fire once */
+          revealObserver.unobserve(entry.target);
         }
       });
     }, {
-      threshold: 0.1,
-      rootMargin: '0px 0px -40px 0px',
+      threshold: 0.05,
+      rootMargin: '0px 0px -20px 0px',
     });
 
-    $$('.js-reveal').forEach((el, index) => {
-      /* Stagger delay per group of 4 */
-      el.style.transitionDelay = `${(index % 4) * 0.09}s`;
+    revealEls.forEach((el, index) => {
+      el.style.transitionDelay = `${(index % 4) * 0.08}s`;
       revealObserver.observe(el);
     });
+
+    if (initialHashTarget) {
+      revealEls.forEach(el => {
+        el.style.transitionDelay = '0s';
+        el.classList.add('revealed');
+      });
+    } else {
+      revealVisibleInViewport();
+      window.addEventListener('scroll', rafThrottle(revealVisibleInViewport), { passive: true });
+    }
   } else {
-    /* Immediately reveal all elements for reduced-motion users */
-    $$('.js-reveal').forEach(el => el.classList.add('revealed'));
+    revealEls.forEach(el => el.classList.add('revealed'));
   }
 
   /* ══════════════════════════════════════════════════════════════
@@ -364,62 +462,35 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ══════════════════════════════════════════════════════════════
-     CONTACT FORM — validation + async submit
+     CONTACT FORMS (#cform & #contact-form) — Validation + Submit
      ══════════════════════════════════════════════════════════════ */
-  if (cform) {
+  const sanitise = (str) => str.replace(/<[^>]*>/g, '').trim();
 
-    /* ── Validation helpers ─────────────────────────────────── */
-    const rules = {
-      fn: { required: true, minLength: 2, maxLength: 80,
-            messages: { required: 'Name is required.', minLength: 'Name must be at least 2 characters.' } },
-      fe: { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-            messages: { required: 'Email address is required.', pattern: 'Please enter a valid email address.' } },
-      fm: { required: true, minLength: 10, maxLength: 2000,
-            messages: { required: 'A message is required.', minLength: 'Message must be at least 10 characters.' } },
-    };
+  const initContactForm = ({ form, fieldMap, submitBtn, defaultLabel, successEl, errorEl, statusWrap }) => {
+    if (!form || !submitBtn) return;
 
-    /** Rate limiting — prevents rapid re-submission */
     let lastSubmitTime = 0;
     const SUBMIT_COOLDOWN_MS = 5000;
 
-    /**
-     * Sanitise a string — strip HTML tags to prevent stored XSS.
-     * @param {string} str
-     * @returns {string}
-     */
-    const sanitise = (str) => str.replace(/<[^>]*>/g, '').trim();
+    const fields = Object.keys(fieldMap)
+      .map(id => $(`#${id}`, form))
+      .filter(Boolean);
 
-    /**
-     * Validate a single field.
-     * @param {HTMLInputElement|HTMLTextAreaElement} field
-     * @returns {{ valid: boolean, message: string }}
-     */
     const validateField = (field) => {
-      const id    = field.id;
-      const rule  = rules[id];
+      const cfg = fieldMap[field.id];
+      if (!cfg) return { valid: true, message: '' };
       const value = field.value.trim();
 
-      if (!rule) return { valid: true, message: '' };
-
-      if (rule.required && !value)
-        return { valid: false, message: rule.messages.required };
-      if (rule.minLength && value.length < rule.minLength)
-        return { valid: false, message: rule.messages.minLength };
-      if (rule.maxLength && value.length > rule.maxLength)
-        return { valid: false, message: `Maximum ${rule.maxLength} characters allowed.` };
-      if (rule.pattern && !rule.pattern.test(value))
-        return { valid: false, message: rule.messages.pattern };
-
+      if (cfg.required && !value) return { valid: false, message: cfg.messages.required };
+      if (cfg.minLength && value.length < cfg.minLength) return { valid: false, message: cfg.messages.minLength };
+      if (cfg.maxLength && value.length > cfg.maxLength) return { valid: false, message: `Maximum ${cfg.maxLength} characters allowed.` };
+      if (cfg.pattern && !cfg.pattern.test(value)) return { valid: false, message: cfg.messages.pattern };
       return { valid: true, message: '' };
     };
 
-    /**
-     * Show or clear an inline error for a field.
-     * @param {HTMLInputElement|HTMLTextAreaElement} field
-     * @param {string} message  — empty string clears the error
-     */
     const setFieldError = (field, message) => {
-      const errEl = $(`#${field.id}-err`);
+      const cfg = fieldMap[field.id];
+      const errEl = cfg?.errId ? $(`#${cfg.errId}`) : null;
       if (!errEl) return;
 
       if (message) {
@@ -434,13 +505,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     };
 
-    /* Validate on blur for immediate feedback */
-    $$('#fn, #fe, #fm', cform).forEach(field => {
+    fields.forEach(field => {
       field.addEventListener('blur', () => {
         const { valid, message } = validateField(field);
         setFieldError(field, valid ? '' : message);
       });
-      /* Clear error on input once user starts correcting */
       field.addEventListener('input', () => {
         if (field.getAttribute('aria-invalid') === 'true') {
           const { valid, message } = validateField(field);
@@ -449,79 +518,70 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    /**
-     * Validate all fields and return overall validity.
-     * @returns {boolean}
-     */
     const validateAll = () => {
       let allValid = true;
       let firstInvalid = null;
-
-      $$('#fn, #fe, #fm', cform).forEach(field => {
+      fields.forEach(field => {
         const { valid, message } = validateField(field);
         setFieldError(field, valid ? '' : message);
         if (!valid && !firstInvalid) firstInvalid = field;
         if (!valid) allValid = false;
       });
-
       if (firstInvalid) firstInvalid.focus();
       return allValid;
     };
 
-    /* ── Submission state helpers ───────────────────────────── */
     const setSubmitting = (isSubmitting) => {
-      const lbl  = subBtn.querySelector('.blbl');
-      const icon = subBtn.querySelector('i');
+      const lbl = submitBtn.querySelector('.blbl, span');
+      const icon = submitBtn.querySelector('i');
+      submitBtn.disabled = isSubmitting;
+      submitBtn.setAttribute('aria-busy', String(isSubmitting));
 
-      subBtn.disabled = isSubmitting;
-      subBtn.setAttribute('aria-busy', String(isSubmitting));
+      if (lbl) lbl.textContent = isSubmitting ? 'Sending…' : defaultLabel;
+      if (icon) icon.className = isSubmitting ? 'fas fa-spinner fa-spin' : 'fas fa-paper-plane';
+    };
 
-      if (isSubmitting) {
-        lbl.textContent = 'Sending…';
-        icon.className  = 'fas fa-spinner fa-spin';
-      } else {
-        lbl.textContent = 'Send Message';
-        icon.className  = 'fas fa-paper-plane';
-      }
+    const clearStatus = () => {
+      if (successEl) successEl.hidden = true;
+      if (errorEl) errorEl.hidden = true;
+      if (statusWrap) statusWrap.innerHTML = '';
     };
 
     const showStatus = (type) => {
-      fsucc.hidden = type !== 'success';
-      ferr.hidden  = type !== 'error';
-      const el = type === 'success' ? fsucc : ferr;
-      el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      if (successEl && errorEl) {
+        successEl.hidden = type !== 'success';
+        errorEl.hidden = type !== 'error';
+        const el = type === 'success' ? successEl : errorEl;
+        el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } else if (statusWrap) {
+        statusWrap.innerHTML = type === 'success'
+          ? `<div class="fstat fsucc" role="alert"><i class="fas fa-circle-check" aria-hidden="true"></i><div><strong>Message sent!</strong><span>We'll respond within 24 hours.</span></div></div>`
+          : `<div class="fstat ferr" role="alert"><i class="fas fa-circle-exclamation" aria-hidden="true"></i><div><strong>Failed to send.</strong><span>Please email us directly at <a href="mailto:hello@geenix.live">hello@geenix.live</a></span></div></div>`;
+        statusWrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
     };
 
-    /* ── Submit handler ─────────────────────────────────────── */
-    cform.addEventListener('submit', async (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
+      clearStatus();
 
-      /* Hide previous messages */
-      fsucc.hidden = true;
-      ferr.hidden  = true;
-
-      /* Client-side validation */
       if (!validateAll()) return;
 
-      /* Rate limiting — prevent rapid submissions */
       const now = Date.now();
-      if (now - lastSubmitTime < SUBMIT_COOLDOWN_MS) {
-        return; /* silently ignore rapid resubmission */
-      }
+      if (now - lastSubmitTime < SUBMIT_COOLDOWN_MS) return;
       lastSubmitTime = now;
 
       setSubmitting(true);
 
       try {
-        /* Sanitise form values before submission */
-        const formData = new FormData(cform);
+        const formData = new FormData(form);
         for (const [key, value] of formData.entries()) {
           if (typeof value === 'string') {
             formData.set(key, sanitise(value));
           }
         }
 
-        const res = await fetch(cform.action, {
+        const res = await fetch(form.action, {
           method: 'POST',
           body: formData,
           headers: { Accept: 'application/json' },
@@ -534,12 +594,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         showStatus('success');
-        cform.reset();
-        /* Clear any residual validation states */
-        $$('input, textarea', cform).forEach(f => {
-          f.removeAttribute('aria-invalid');
-        });
-
+        form.reset();
+        $$('input, textarea', form).forEach(f => f.removeAttribute('aria-invalid'));
       } catch (err) {
         console.error('[GEENIX] Form submission error:', err.message || err);
         showStatus('error');
@@ -547,22 +603,56 @@ document.addEventListener('DOMContentLoaded', () => {
         setSubmitting(false);
       }
     });
+  };
+
+  /* Homepage Contact Form */
+  const cform = $('#cform');
+  if (cform) {
+    initContactForm({
+      form: cform,
+      submitBtn: $('#sub-btn'),
+      defaultLabel: 'Send Message',
+      successEl: $('#fsucc'),
+      errorEl: $('#ferr'),
+      fieldMap: {
+        fn: { errId: 'fn-err', required: true, minLength: 2, maxLength: 80,
+              messages: { required: 'Name is required.', minLength: 'Name must be at least 2 characters.' } },
+        fe: { errId: 'fe-err', required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+              messages: { required: 'Email address is required.', pattern: 'Please enter a valid email address.' } },
+        fm: { errId: 'fm-err', required: true, minLength: 10, maxLength: 2000,
+              messages: { required: 'A message is required.', minLength: 'Message must be at least 10 characters.' } },
+      }
+    });
   }
 
+  /* Dedicated /contact/ Page Form */
+  const contactPageForm = $('#contact-form');
+  if (contactPageForm) {
+    initContactForm({
+      form: contactPageForm,
+      submitBtn: $('button[type="submit"]', contactPageForm),
+      defaultLabel: 'Send Inquiry',
+      statusWrap: $('#contact-form-status'),
+      fieldMap: {
+        'contact-name': { errId: 'contact-err-name', required: true, minLength: 2, maxLength: 80,
+                          messages: { required: 'Name is required.', minLength: 'Name must be at least 2 characters.' } },
+        'contact-email': { errId: 'contact-err-email', required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                           messages: { required: 'Email address is required.', pattern: 'Please enter a valid email address.' } },
+        'contact-message': { errId: 'contact-err-message', required: true, minLength: 10, maxLength: 2000,
+                             messages: { required: 'Project details are required.', minLength: 'Please enter at least 10 characters.' } },
+      }
+    });
+  }
 
-  /* ══════════════════════════════════════════════════════════════════
+  /* ══════════════════════════════════════════════════════════════
      COOKIE CONSENT BANNER
-     ══════════════════════════════════════════════════════════════════ */
+     ══════════════════════════════════════════════════════════════ */
   {
     const COOKIE_KEY = 'geenix_cookie_consent';
     const banner = $('#cookie-banner');
     const acceptBtn = $('#cookie-accept');
     const declineBtn = $('#cookie-decline');
 
-    /**
-     * Dismiss the cookie banner with a slide-down animation.
-     * @param {'accepted'|'declined'} choice
-     */
     const dismissBanner = (choice) => {
       if (!banner) return;
       try { localStorage.setItem(COOKIE_KEY, choice); } catch {}
@@ -573,13 +663,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }, { once: true });
     };
 
-    /* Only show if user hasn't already made a choice */
     if (banner) {
       let consent = null;
       try { consent = localStorage.getItem(COOKIE_KEY); } catch {}
 
       if (!consent) {
-        /* Delay banner appearance so it doesn't compete with page load */
         setTimeout(() => {
           banner.hidden = false;
         }, 1500);
@@ -592,8 +680,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ══════════════════════════════════════════════════════════════
      DEFERRED CHATBOT
-     The chatbot is not part of the critical rendering path. Load its
-     CSS and JavaScript once the page is idle so first paint stays fast.
      ══════════════════════════════════════════════════════════════ */
   {
     const loadChatbot = () => {
